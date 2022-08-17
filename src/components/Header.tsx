@@ -9,10 +9,10 @@ export const Header = () => {
             <span className="font-bold text-gray-700">Yama IT Portfolio</span>
           </a>
           <div
-            className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+            className=" justify-between items-center flex w-auto"
             id="mobile-menu-2"
           >
-            <ul className="flex flex-col mt-4 lg:flex-row lg:space-x-8 lg:mt-0 list-none font-bold">
+            <ul className="flex mt-4 flex-row lg:space-x-8 lg:mt-0 list-none font-bold">
               <li>
                 <a
                   href="#"
