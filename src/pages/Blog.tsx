@@ -5,7 +5,7 @@ type BlogType = {
   content: string;
   createDate: string;
 };
-const blogList: BlogType[] = [
+export const blogList: BlogType[] = [
   {
     title: "This is a header",
     content:
@@ -49,7 +49,7 @@ const blogList: BlogType[] = [
     createDate: "22.07.11",
   },
 ];
-export const Blog = () => {
+const Blog = () => {
   return (
     <>
       <div className="border border-gray-200 py-4">
@@ -67,3 +67,5 @@ export const Blog = () => {
     </>
   );
 };
+
+export default Blog;

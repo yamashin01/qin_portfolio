@@ -8,7 +8,8 @@ type PortfolioType = {
   content: string;
   createdPeriod: string;
 };
-const portfolioList: PortfolioType[] = [
+
+export const portfolioList: PortfolioType[] = [
   {
     title: "IT KINGDOM",
     content:
@@ -47,7 +48,7 @@ const portfolioList: PortfolioType[] = [
   },
 ];
 
-export const Portfolio = () => {
+const Portfolio = () => {
   return (
     <>
       <div className="border border-gray-200 py-4">
@@ -73,3 +74,5 @@ export const Portfolio = () => {
     </>
   );
 };
+
+export default Portfolio;
