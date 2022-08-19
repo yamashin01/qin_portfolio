@@ -10,7 +10,7 @@ export const Layout = (props: Props) => {
     <div>
       <div className="container mx-auto grid grid-rows-[auto,1fr,auto] min-h-screen">
         <Header />
-        <main>{props.children}</main>
+        <main className="mx-20">{props.children}</main>
         <Footer />
       </div>
     </div>
