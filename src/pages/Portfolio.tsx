@@ -4,7 +4,6 @@ import portfolioImg from "public/programing_img.jpg";
 
 type PortfolioType = {
   title: string;
-  // image: string;
   content: string;
   createdPeriod: string;
 };
