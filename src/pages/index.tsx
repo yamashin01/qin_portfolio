@@ -19,16 +19,16 @@ const Home = () => {
 
   return (
     <div>
-      <div className="flex container w-auto bg-pink-500 text-white h-56 justify-between mb-12">
-        <div className="h-full place-content-center">
-          <div className="text-3xl font-extrabold ml-20 pt-20 align-middle">
+      <div className="md:flex container w-auto bg-pink-500 text-white h-72 md:h-56 justify-between mb-12 place-content-center">
+        <div className="ml-4 md:ml-20">
+          <div className="text-3xl font-extrabold pt-20 align-middle">
             Yama IT Portfolio
           </div>
-          <div className="align-middle ml-20">
+          <div className="align-middle">
             ヤマのITポートフォリオのページです。
           </div>
         </div>
-        <div className="flex mr-40 pt-24 justify-between w-30">
+        <div className="flex md:mr-40 ml-4 md:ml-20 pt-4 md:pt-24 md:justify-between">
           <div className="mr-2">
             <FaTwitter />
           </div>
@@ -48,7 +48,7 @@ const Home = () => {
           </div>
           {blogList.map((blog, index) => {
             return index < 5 ? (
-              <div key={blog.title} className="mb-4">
+              <div key={index} className="mb-4">
                 <h3>{blog.title}</h3>
                 <div>{blog.content}</div>
                 <small>{blog.createDate}</small>
@@ -69,7 +69,7 @@ const Home = () => {
           <div className="grid grid-cols-3 gap-2">
             {portfolioList.map((portfolio, index) => {
               return index < 6 ? (
-                <div key={portfolio.title} className="mb-4">
+                <div key={index} className="mb-4">
                   <Image
                     src={portfolioImg}
                     alt="portfolioImg"
