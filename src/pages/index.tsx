@@ -6,6 +6,8 @@ import { FaFacebook, FaGithub, FaTwitter } from "react-icons/fa";
 import { portfolioList } from "src/pages/Portfolio";
 import { blogList } from "./Blog";
 import portfolioImg from "public/programing_img.jpg";
+import { Github } from "src/components/Github";
+import { Twitter } from "src/components/Twitter";
 
 const Home = () => {
   const handleGoBlog = () => {
@@ -17,7 +19,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="flex container bg-pink-500 text-white h-56 justify-between mb-12">
+      <div className="flex container w-auto bg-pink-500 text-white h-56 justify-between mb-12">
         <div className="h-full place-content-center">
           <div className="text-3xl font-extrabold ml-20 pt-20 align-middle">
             Yama IT Portfolio
@@ -86,6 +88,11 @@ const Home = () => {
               View All
             </Button>
           </div>
+        </div>
+        <div className="flex my-20 justify-between">
+          <Github />
+          <div className="w-1/6"></div>
+          <Twitter />
         </div>
       </div>
     </div>
