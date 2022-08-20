@@ -41,7 +41,11 @@ export const MenuModal = (props: Props) => {
 
   return (
     <>
-      <Modal opened={props.isOpened} onClose={closeModal} title="Menu">
+      <Modal
+        opened={props.isOpened}
+        onClose={closeModal}
+        className="bg-pink-500"
+      >
         <section>
           {menuList.map((menu, index) => {
             return (
@@ -52,7 +56,6 @@ export const MenuModal = (props: Props) => {
                 >
                   {menu.name}
                 </button>
-                {/* <Link href={menu.link}>{menu.name}</Link> */}
               </div>
             );
           })}
