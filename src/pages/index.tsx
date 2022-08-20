@@ -66,7 +66,7 @@ const Home = () => {
           <div className="border border-gray-200 py-4">
             <Title>Portfolio</Title>
           </div>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid md:grid-cols-3 gap-2">
             {portfolioList.map((portfolio, index) => {
               return index < 6 ? (
                 <div key={index} className="mb-4">
@@ -89,7 +89,7 @@ const Home = () => {
             </Button>
           </div>
         </div>
-        <div className="flex my-20 justify-between">
+        <div className="md:flex my-20 justify-between">
           <Github />
           <div className="w-1/6"></div>
           <Twitter />
