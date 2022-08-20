@@ -1,4 +1,4 @@
-import { Title } from "@mantine/core";
+import { Button, Title } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
 import twitterIcon from "public/myImage.jpeg";
@@ -67,6 +67,10 @@ const twitterArticleList: TwitterType[] = [
 ];
 
 export const Twitter = () => {
+  const handleGoTwitter = () => {
+    window.location.href = "https://twitter.com/yamashin0413";
+  };
+
   return (
     <div className="w-full">
       <div className="border border-gray-200 w-full py-4">
@@ -99,6 +103,11 @@ export const Twitter = () => {
             </div>
           ) : null;
         })}
+      </div>
+      <div className="text-center">
+        <Button color="dark" radius="xl" onClick={handleGoTwitter}>
+          View on Twitter
+        </Button>
       </div>
     </div>
   );

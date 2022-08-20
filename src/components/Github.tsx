@@ -1,6 +1,6 @@
-import { Title } from "@mantine/core";
+import { Button, Title } from "@mantine/core";
 import React from "react";
-import { FaRegStar, FaSourcetree, FaStar } from "react-icons/fa";
+import { FaRegStar, FaSourcetree } from "react-icons/fa";
 
 type GitHubType = {
   title: string;
@@ -35,6 +35,10 @@ const githubArticleList: GitHubType[] = [
 ];
 
 export const Github = () => {
+  const handleGoGithub = () => {
+    window.location.href = "https://github.com/yamashin01";
+  };
+
   return (
     <div className="w-full">
       <div className="border border-gray-200 w-full py-4">
@@ -79,6 +83,11 @@ export const Github = () => {
             </div>
           ) : null;
         })}
+      </div>
+      <div className="text-center">
+        <Button color="dark" radius="xl" onClick={handleGoGithub}>
+          View on Github
+        </Button>
       </div>
     </div>
   );
