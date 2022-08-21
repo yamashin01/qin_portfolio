@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
-import { MenuModal } from "src/components/menuModal";
+import { MenuModal } from "src/components/MenuModal";
 
 export const Header = () => {
   const [isOpened, setIsOpened] = useState(false);
