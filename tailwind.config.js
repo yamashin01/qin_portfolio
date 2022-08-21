@@ -5,7 +5,7 @@ module.exports = {
     preflight: false,
   },
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  darkMode: false,
+  darkMode: "media",
   theme: {
     extend: {},
   },

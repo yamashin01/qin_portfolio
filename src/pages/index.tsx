@@ -8,6 +8,7 @@ import { blogList } from "./Blog";
 import portfolioImg from "public/programing_img.jpg";
 import { Github } from "src/components/Github";
 import { Twitter } from "src/components/Twitter";
+import Link from "next/link";
 
 const Home = () => {
   const handleGoBlog = () => {
@@ -19,7 +20,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="md:flex container w-auto bg-pink-500 text-white h-72 md:h-56 justify-between mb-12 place-content-center">
+      <div className="md:flex bg-pink-500 text-white h-72 md:h-56 justify-between mb-12 place-content-center">
         <div className="ml-4 md:ml-20">
           <div className="text-3xl font-extrabold pt-20 align-middle">
             Yama IT Portfolio
@@ -28,15 +29,21 @@ const Home = () => {
             ヤマのITポートフォリオのページです。
           </div>
         </div>
-        <div className="flex md:mr-40 ml-4 md:ml-20 pt-4 md:pt-24 md:justify-between">
-          <div className="mr-2">
-            <FaTwitter />
+        <div className="flex md:mr-40 ml-4 md:ml-20 pt-4 md:pt-24 md:justify-between text-xl">
+          <div className="mr-2 cursor-pointer">
+            <Link href="https://twitter.com/yamashin0413">
+              <FaTwitter />
+            </Link>
           </div>
-          <div className="mr-2">
-            <FaFacebook />
+          <div className="mr-2 cursor-pointer">
+            <Link href="https://www.facebook.com/syamada01">
+              <FaFacebook />
+            </Link>
           </div>
-          <div className="mr-2">
-            <FaGithub />
+          <div className="mr-2 cursor-pointer">
+            <Link href="https://github.com/yamashin01">
+              <FaGithub />
+            </Link>
           </div>
         </div>
       </div>
