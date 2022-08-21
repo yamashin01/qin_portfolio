@@ -1,35 +1,34 @@
-import { Button, Modal } from "@mantine/core";
-import Link from "next/link";
+import { Modal } from "@mantine/core";
 import Router from "next/router";
+
+type MenuType = {
+  name: string;
+  link: string;
+};
+export const menuList: MenuType[] = [
+  {
+    name: "About",
+    link: "/About",
+  },
+  {
+    name: "Blog",
+    link: "/Blog",
+  },
+  {
+    name: "Portfolio",
+    link: "/Portfolio",
+  },
+  {
+    name: "Contact",
+    link: "/Contact",
+  },
+];
 
 type Props = {
   isOpened: boolean;
   setIsOpened: React.Dispatch<boolean>;
 };
 export const MenuModal = (props: Props) => {
-  type MenuType = {
-    name: string;
-    link: string;
-  };
-  const menuList: MenuType[] = [
-    {
-      name: "About",
-      link: "/About",
-    },
-    {
-      name: "Blog",
-      link: "/Blog",
-    },
-    {
-      name: "Portfolio",
-      link: "/Portfolio",
-    },
-    {
-      name: "Contact",
-      link: "/Contact",
-    },
-  ];
-
   const closeModal = () => {
     props.setIsOpened(false);
   };
