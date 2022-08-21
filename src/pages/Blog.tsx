@@ -55,9 +55,9 @@ const Blog = () => {
       <div className="border border-gray-200 py-4">
         <Title>Blog</Title>
       </div>
-      {blogList.map((blog) => {
+      {blogList.map((blog, index) => {
         return (
-          <div key={blog.title} className="mb-4">
+          <div key={index} className="mb-4">
             <h3>{blog.title}</h3>
             <div>{blog.content}</div>
             <small>{blog.createDate}</small>
