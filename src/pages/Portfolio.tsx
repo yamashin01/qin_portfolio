@@ -54,9 +54,9 @@ const Portfolio = () => {
         <Title>Portfolio</Title>
       </div>
       <div className="grid md:grid-cols-3 gap-2">
-        {portfolioList.map((portfolio) => {
+        {portfolioList.map((portfolio, index) => {
           return (
-            <div key={portfolio.title} className="mb-4">
+            <div key={index} className="mb-4">
               <Image
                 src={portfolioImg}
                 alt="portfolioImg"
