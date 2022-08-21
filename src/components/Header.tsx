@@ -22,16 +22,16 @@ export const Header = () => {
             </span>
           </Link>
           <div className=" justify-between items-center flex w-auto">
-            <ul className="md:flex hidden mt-4 flex-row lg:space-x-8 lg:mt-0 list-none font-bold">
+            <ul className="md:flex hidden mt-4 flex-row md:space-x-8 lg:mt-0 list-none font-bold">
               {menuList.map((menu, index) => {
                 return (
                   <li key={index}>
                     <Link
                       href={menu.link}
-                      className="block py-2 pr-4 pl-3 text-gray-700 no-underline rounded bg-primary-700 lg:p-0 dark:text-white"
+                      className="block py-2 pr-4 pl-3 text-gray-700 no-underline rounded bg-primary-700 md:p-0 dark:text-white"
                       aria-current="page"
                     >
-                      {menu.name}
+                      <span className="hover:cursor-pointer">{menu.name}</span>
                     </Link>
                   </li>
                 );
