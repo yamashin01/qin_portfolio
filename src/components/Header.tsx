@@ -1,21 +1,28 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { FaBars } from "react-icons/fa";
+import { MenuModal } from "src/components/MenuModal";
 
 export const Header = () => {
+  const [isOpened, setIsOpened] = useState(false);
+
   return (
     <header>
       <nav className="py-2.5 mx-20">
-        <div className="flex flex-wrap justify-between">
+        <div className="flex flex-wrap md:justify-between">
+          <button
+            className="md:hidden bg-white border-none mr-4 hover:cursor-pointer text-lg"
+            onClick={() => setIsOpened(true)}
+          >
+            <FaBars />
+          </button>
           <Link href="/" className="flex items-center no-underline">
             <span className="font-bold text-gray-700 hover:cursor-pointer">
               Yama IT Portfolio
             </span>
           </Link>
-          <div
-            className=" justify-between items-center flex w-auto"
-            id="mobile-menu-2"
-          >
-            <ul className="flex mt-4 flex-row lg:space-x-8 lg:mt-0 list-none font-bold">
+          <div className=" justify-between items-center flex w-auto">
+            <ul className="md:flex hidden mt-4 flex-row lg:space-x-8 lg:mt-0 list-none font-bold">
               <li>
                 <Link
                   href="/About"
@@ -52,6 +59,7 @@ export const Header = () => {
             </ul>
           </div>
         </div>
+        <MenuModal isOpened={isOpened} setIsOpened={setIsOpened} />
       </nav>
     </header>
   );

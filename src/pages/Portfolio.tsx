@@ -53,7 +53,7 @@ const Portfolio = () => {
       <div className="border border-gray-200 py-4">
         <Title>Portfolio</Title>
       </div>
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid md:grid-cols-3 gap-2">
         {portfolioList.map((portfolio) => {
           return (
             <div key={portfolio.title} className="mb-4">
