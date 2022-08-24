@@ -4,13 +4,25 @@ import Router from "next/router";
 import React from "react";
 import { FaFacebook, FaGithub, FaTwitter } from "react-icons/fa";
 import { portfolioList } from "src/pages/Portfolio";
-import { blogList } from "./Blog";
+import { Blog } from "./Blog";
 import portfolioImg from "public/programing_img.jpg";
 import { Github } from "src/components/Github";
 import { Twitter } from "src/components/Twitter";
 import Link from "next/link";
+import { GetStaticProps, NextPage } from "next";
+import { client } from "src/libs/client";
+import { MicroCMSListResponse } from "microcms-js-sdk";
 
-const Home = () => {
+type Props = MicroCMSListResponse<Blog>;
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const data = await client.getList<Blog>({ endpoint: "blog" });
+  return {
+    props: data,
+  };
+};
+
+const Home: NextPage<Props> = (props) => {
   const handleGoBlog = () => {
     Router.push("/Blog");
   };
@@ -53,12 +65,12 @@ const Home = () => {
           <div className="border border-gray-200 py-4">
             <Title>Blog</Title>
           </div>
-          {blogList.map((blog, index) => {
+          {props.contents.map((content, index) => {
             return index < 5 ? (
-              <div key={index} className="mb-4">
-                <h3>{blog.title}</h3>
-                <div>{blog.content}</div>
-                <small>{blog.createDate}</small>
+              <div key={content.id} className="mb-4">
+                <h3>{content.title}</h3>
+                <div dangerouslySetInnerHTML={{ __html: content.body}} />
+                <small>{content.publishedAt}</small>
               </div>
             ) : null;
           })}
