@@ -96,7 +96,7 @@ const Home: NextPage<Props> = (props) => {
                     height={240}
                   />
                   <h3>{portfolio.title}</h3>
-                  <div>{portfolio.content}</div>
+                  <div>{portfolio.body}</div>
                   <small>{portfolio.createdPeriod}</small>
                 </div>
               ) : null;
