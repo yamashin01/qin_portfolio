@@ -75,9 +75,17 @@ const Home: NextPage<MicroCMSProps> = (props) => {
           {props.blogData.contents.map((content, index) => {
             return index < 5 ? (
               <div key={content.id} className="mb-4">
-                <h3>{content.title}</h3>
-                <div dangerouslySetInnerHTML={{ __html: content.body}} />
-                <small>{format(new Date(content.publishedAt), "yyyy.MM.dd")}</small>
+                <div className="hover:cursor-pointer text-blue-500 hover:text-blue-800">
+                  <Link href={`Blog/${content.id}`}>
+                    <h3 className="mb-0">{content.title}</h3>
+                  </Link>
+                </div>
+                <Text lineClamp={2}>
+                  <div dangerouslySetInnerHTML={{ __html: content.body}} />
+                </Text>
+                <div className="text-right">
+                  <small>{format(new Date(content.publishedAt), "yyyy.MM.dd")}</small>
+                </div>
               </div>
             ) : null;
           })}
@@ -92,17 +100,25 @@ const Home: NextPage<MicroCMSProps> = (props) => {
           <div className="border border-gray-200 py-4">
             <Title>Portfolio</Title>
           </div>
-          <div className="grid md:grid-cols-3 gap-2">
+          <div className="grid md:grid-cols-3 gap-4">
             {props.portfolioData.contents.map((content, index) => {
               return index < 6 ? (
                 <div key={index} className="mb-4">
-                  <Image
-                    src={portfolioImg}
-                    alt="portfolioImg"
-                    width={360}
-                    height={240}
-                  />
-                  <h3 className="text-center mb-0">{content.title}</h3>
+                  <div className="hover:cursor-pointer">
+                    <Link href={`/Portfolio/${content.id}`}>
+                      <Image
+                        src={portfolioImg}
+                        alt="portfolioImg"
+                        width={360}
+                        height={240}
+                        />
+                    </Link>
+                  </div>
+                  <div className="hover:cursor-pointer text-blue-500 hover:text-blue-800">
+                    <Link href={`/Portfolio/${content.id}`}>
+                      <h3 className="text-center mb-0">{content.title}</h3>
+                    </Link>
+                  </div>
                   <div className="my-4">
                     <Text lineClamp={2}><div dangerouslySetInnerHTML={{ __html: content.body }} /></Text>
                   </div>
