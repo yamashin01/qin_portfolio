@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Router from "next/router";
 import { client } from "src/libs/client";
-import { PortfolioType } from ".";
+import { PortfolioType } from "src/types/types";
 
 type Props = PortfolioType & MicroCMSContentId & MicroCMSDate;
 

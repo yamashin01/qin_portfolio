@@ -3,16 +3,7 @@ import { MicroCMSListResponse } from "microcms-js-sdk";
 import { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { client } from "src/libs/client";
-
-export type BlogType = {
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-  title: string;
-  body: string;
-};
+import { BlogType } from "src/types/types";
 
 type Props = MicroCMSListResponse<BlogType>;
 

@@ -1,8 +1,8 @@
 import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { client } from "src/libs/client";
-import { BlogType } from ".";
 import { format } from "date-fns";
+import { BlogType } from "src/types/types";
 
 type Props = BlogType & MicroCMSContentId & MicroCMSDate;
 

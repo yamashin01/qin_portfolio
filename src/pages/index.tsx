@@ -3,8 +3,6 @@ import Image from "next/image";
 import Router from "next/router";
 import React from "react";
 import { FaFacebook, FaRss, FaTwitter } from "react-icons/fa";
-import { PortfolioType } from "src/pages/Portfolio";
-import { BlogType } from "./Blog";
 import portfolioImg from "public/programing_img.jpg";
 import { Github } from "src/components/Github";
 import { Twitter } from "src/components/Twitter";
@@ -13,6 +11,7 @@ import { GetStaticProps, NextPage } from "next";
 import { client } from "src/libs/client";
 import { MicroCMSListResponse } from "microcms-js-sdk";
 import { format } from "date-fns";
+import { BlogType, PortfolioType } from "src/types/types";
 
 export type MicroCMSProps = {
   blogData: MicroCMSListResponse<BlogType>;

@@ -6,20 +6,7 @@ import Link from "next/link";
 import { client } from "src/libs/client";
 import { format } from "date-fns";
 import alt_image from "public/programing_img.jpg";
-
-export type PortfolioType = {
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-  title: string;
-  body: string;
-  image?: {
-    url: string;
-  };
-  url?: string;
-};
+import { PortfolioType } from "src/types/types";
 
 type Props = MicroCMSListResponse<PortfolioType>;
 
