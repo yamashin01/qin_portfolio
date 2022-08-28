@@ -1,15 +1,20 @@
-import { Title } from "@mantine/core";
+import { Text, Title } from "@mantine/core";
 import { MicroCMSListResponse } from "microcms-js-sdk";
 import { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import portfolioImg from "public/programing_img.jpg";
 import { client } from "src/libs/client";
+import { format } from "date-fns";
+import alt_image from "public/programing_img.jpg";
 
 export type PortfolioType = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
   title: string;
   body: string;
-  createdPeriod: string;
   image?: {
     url: string;
   };
@@ -25,70 +30,55 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   };
 };
 
-export const portfolioList: PortfolioType[] = [
-  {
-    title: "IT KINGDOM",
-    body:
-      "当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。",
-    createdPeriod: "2021.10 - 2021.12",
-  },
-  {
-    title: "IT KINGDOM",
-    body:
-      "当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。",
-    createdPeriod: "2021.10 - 2021.12",
-  },
-  {
-    title: "IT KINGDOM",
-    body:
-      "当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。",
-    createdPeriod: "2021.10 - 2021.12",
-  },
-  {
-    title: "IT KINGDOM",
-    body:
-      "当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。",
-    createdPeriod: "2021.10 - 2021.12",
-  },
-  {
-    title: "IT KINGDOM",
-    body:
-      "当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。",
-    createdPeriod: "2021.10 - 2021.12",
-  },
-  {
-    title: "IT KINGDOM",
-    body:
-      "当サロンのLPページ。React、Next.js、TypeScriptなどのモダンな技術を用いて作られています。初心者にちょうど良い難易度の制作物です。",
-    createdPeriod: "2021.10 - 2021.12",
-  },
-];
-
 const Portfolio: NextPage<Props> = (props) => {
-  console.log(`props = ${JSON.stringify(props)}`);
   return (
     <>
       <div className="border border-gray-200 py-4">
         <Title>Portfolio</Title>
       </div>
-      <div className="grid md:grid-cols-3 gap-2">
+      <div className="grid md:grid-cols-3 gap-4">
         {props.contents.map((content) => {
           return (
-            <div key={content.id}>
-              <h2>{content.title}</h2>
+            <div key={content.id} className="col-span-1">
+              <div className="text-center">
+                <Link href={`/Portfolio/${content.id}`}>
+                  <Title order={3}>{content.title}</Title>
+                </Link>
+              </div>
               {content.image?.url ? 
-              <div className="hover:cursor-pointer">
+              <div>
+                <div className="hover:cursor-pointer">
+                  <Link href={`/Portfolio/${content.id}`}>
+                    <Image
+                      src={content.image.url}
+                      alt="portfolioImg"
+                      width={360}
+                      height={240}
+                      layout="responsive"
+                      />
+                  </Link>
+                </div>
+              </div> : 
+                <div className="hover:cursor-pointer">
                 <Link href={`/Portfolio/${content.id}`}>
                   <Image
-                    src={content.image.url}
-                    alt="portfolioImg"
-                    width={240}
-                    height={360}
+                    src={alt_image}
+                    alt="alt_image"
+                    width={360}
+                    height={240}
+                    layout="responsive"
                     />
                 </Link>
-              </div> : null
-              }
-              <small>{content.publishedAt}</small>
+              </div>
+            }
+              <div>
+                <Text lineClamp={2}>
+                  <div dangerouslySetInnerHTML={{ __html: content.body}} />
+                </Text>
+              </div>
+              <div className="text-right">
+                <small>{format(new Date(content.publishedAt), "yyyy.MM.dd")}</small>
+              </div>
             </div>
           )
         })}

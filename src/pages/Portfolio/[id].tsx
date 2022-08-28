@@ -16,25 +16,27 @@ const PortfolioId: NextPage<Props> = (props) => {
   return (
     <div className="container w-auto">
       <div className="mb-8">
-        {props.url ? 
-        <div className="hover:cursor-pointer hover:text-blue-800 text-blue-500">
-            <Link href={props.url}>
-                <h1>{props.title}</h1>
-            </Link>
-        </div> : null
-        }
+        <div className="mb-8"> 
+            {props.url ? 
+            <div className="hover:cursor-pointer hover:text-blue-800 text-blue-500">
+                <Link href={props.url}>
+                    <Title order={2}>{props.title}</Title>
+                </Link>
+            </div>
+            : <Title order={2}>{props.title}</Title>
+            }
+        </div>
         {props.image?.url ?
-        <div className="flex justify-between">
-            <div dangerouslySetInnerHTML={{ __html: props.body }} className="pr-8"/>
+        <div className="items-center text-center">
             <Image
                 src={props.image.url}
-                alt="img"
+                alt="portfolio Image"
                 width={360}
-                height={360}
+                height={240}
                 />
         </div> : null
         }
-        登録日：<time>{props.publishedAt}</time>
+        <div dangerouslySetInnerHTML={{ __html: props.body }} />
       </div>
       <div>
           <Button onClick={handleBack}>戻る</Button>

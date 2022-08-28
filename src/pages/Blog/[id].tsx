@@ -1,16 +1,16 @@
 import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { client } from "src/libs/client";
-import { Blog } from ".";
+import { BlogType } from ".";
+import { format } from "date-fns";
 
-type Props = Blog & MicroCMSContentId & MicroCMSDate;
+type Props = BlogType & MicroCMSContentId & MicroCMSDate;
 
 const BlogId: NextPage<Props> = (props) => {
-  console.log(props);
   return (
     <div>
       <h1>{props.title}</h1>
-      <time>{props.publishedAt}</time>
+      <time>{format(new Date(props.publishedAt), "yyyy.MM.dd")}</time>
       <div dangerouslySetInnerHTML={{ __html: props.body }} />
     </div>
   );
@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps<Props, { id: string }> = async (
   if (!ctx.params) {
     return { notFound: true };
   }
-  const data = await client.getListDetail<Blog>({
+  const data = await client.getListDetail<BlogType>({
     endpoint: "blog",
     contentId: ctx.params.id,
   });
