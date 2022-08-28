@@ -16,19 +16,19 @@ export const Header = () => {
           >
             <FaBars />
           </button>
-          <Link href="/" className="flex items-center no-underline">
-            <span className="font-bold text-gray-700 hover:cursor-pointer">
+          <Link href="/" className="flex items-center no-underline place-items-center">
+            <span className="font-bold text-gray-700 hover:cursor-pointer place-items-center items-center">
               Yama IT Portfolio
             </span>
           </Link>
-          <div className=" justify-between items-center flex w-auto">
+          <div className="justify-between flex w-auto">
             <ul className="md:flex hidden mt-4 flex-row md:space-x-8 lg:mt-0 list-none font-bold">
               {menuList.map((menu, index) => {
                 return (
                   <li key={index}>
                     <Link
                       href={menu.link}
-                      className="block py-2 pr-4 pl-3 text-gray-700 no-underline rounded bg-primary-700 md:p-0 dark:text-white"
+                      className="block px-4 text-gray-700 no-underline rounded bg-primary-700 md:p-0 dark:text-white"
                       aria-current="page"
                     >
                       <span className="hover:cursor-pointer">{menu.name}</span>

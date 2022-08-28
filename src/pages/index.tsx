@@ -1,10 +1,8 @@
-import { Button, Title } from "@mantine/core";
+import { Button, Text, Title } from "@mantine/core";
 import Image from "next/image";
 import Router from "next/router";
 import React from "react";
-import { FaFacebook, FaGithub, FaTwitter } from "react-icons/fa";
-import { portfolioList } from "src/pages/Portfolio";
-import { Blog } from "./Blog";
+import { FaFacebook, FaRss, FaTwitter } from "react-icons/fa";
 import portfolioImg from "public/programing_img.jpg";
 import { Github } from "src/components/Github";
 import { Twitter } from "src/components/Twitter";
@@ -12,17 +10,26 @@ import Link from "next/link";
 import { GetStaticProps, NextPage } from "next";
 import { client } from "src/libs/client";
 import { MicroCMSListResponse } from "microcms-js-sdk";
+import { format } from "date-fns";
+import { BlogType, PortfolioType } from "src/types/types";
 
-type Props = MicroCMSListResponse<Blog>;
+export type MicroCMSProps = {
+  blogData: MicroCMSListResponse<BlogType>;
+  portfolioData: MicroCMSListResponse<PortfolioType>;
+};
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const data = await client.getList<Blog>({ endpoint: "blog" });
+export const getStaticProps: GetStaticProps<MicroCMSProps> = async () => {
+  const blogData = await client.getList<BlogType>({ endpoint: "blog" });
+  const portfolioData = await client.getList<PortfolioType>({ endpoint: "portfolio" });
   return {
-    props: data,
+    props: {
+      blogData,
+      portfolioData,
+    }
   };
 };
 
-const Home: NextPage<Props> = (props) => {
+const Home: NextPage<MicroCMSProps> = (props) => {
   const handleGoBlog = () => {
     Router.push("/Blog");
   };
@@ -53,8 +60,8 @@ const Home: NextPage<Props> = (props) => {
             </Link>
           </div>
           <div className="mr-2 cursor-pointer">
-            <Link href="https://github.com/yamashin01">
-              <FaGithub />
+            <Link href="/">
+              <FaRss />
             </Link>
           </div>
         </div>
@@ -65,12 +72,20 @@ const Home: NextPage<Props> = (props) => {
           <div className="border border-gray-200 py-4">
             <Title>Blog</Title>
           </div>
-          {props.contents.map((content, index) => {
+          {props.blogData.contents.map((content, index) => {
             return index < 5 ? (
               <div key={content.id} className="mb-4">
-                <h3>{content.title}</h3>
-                <div dangerouslySetInnerHTML={{ __html: content.body}} />
-                <small>{content.publishedAt}</small>
+                <div className="hover:cursor-pointer text-blue-500 hover:text-blue-800">
+                  <Link href={`Blog/${content.id}`}>
+                    <h3 className="mb-0">{content.title}</h3>
+                  </Link>
+                </div>
+                <Text lineClamp={2}>
+                  <div dangerouslySetInnerHTML={{ __html: content.body}} />
+                </Text>
+                <div className="text-right">
+                  <small>{format(new Date(content.publishedAt), "yyyy.MM.dd")}</small>
+                </div>
               </div>
             ) : null;
           })}
@@ -85,19 +100,28 @@ const Home: NextPage<Props> = (props) => {
           <div className="border border-gray-200 py-4">
             <Title>Portfolio</Title>
           </div>
-          <div className="grid md:grid-cols-3 gap-2">
-            {portfolioList.map((portfolio, index) => {
+          <div className="grid md:grid-cols-3 gap-4">
+            {props.portfolioData.contents.map((content, index) => {
               return index < 6 ? (
                 <div key={index} className="mb-4">
-                  <Image
-                    src={portfolioImg}
-                    alt="portfolioImg"
-                    width={360}
-                    height={240}
-                  />
-                  <h3>{portfolio.title}</h3>
-                  <div>{portfolio.content}</div>
-                  <small>{portfolio.createdPeriod}</small>
+                  <div className="hover:cursor-pointer">
+                    <Link href={`/Portfolio/${content.id}`}>
+                      <Image
+                        src={portfolioImg}
+                        alt="portfolioImg"
+                        width={360}
+                        height={240}
+                        />
+                    </Link>
+                  </div>
+                  <div className="hover:cursor-pointer text-blue-500 hover:text-blue-800">
+                    <Link href={`/Portfolio/${content.id}`}>
+                      <h3 className="text-center mb-0">{content.title}</h3>
+                    </Link>
+                  </div>
+                  <div className="my-4">
+                    <Text lineClamp={2}><div dangerouslySetInnerHTML={{ __html: content.body }} /></Text>
+                  </div>
                 </div>
               ) : null;
             })}
