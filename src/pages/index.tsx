@@ -2,7 +2,7 @@ import { Button, Title } from "@mantine/core";
 import Image from "next/image";
 import Router from "next/router";
 import React from "react";
-import { FaFacebook, FaGithub, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaRss, FaTwitter } from "react-icons/fa";
 import { portfolioList } from "src/pages/Portfolio";
 import { Blog } from "./Blog";
 import portfolioImg from "public/programing_img.jpg";
@@ -53,8 +53,8 @@ const Home: NextPage<Props> = (props) => {
             </Link>
           </div>
           <div className="mr-2 cursor-pointer">
-            <Link href="https://github.com/yamashin01">
-              <FaGithub />
+            <Link href="/">
+              <FaRss />
             </Link>
           </div>
         </div>
