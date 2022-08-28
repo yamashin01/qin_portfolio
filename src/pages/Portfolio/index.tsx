@@ -27,11 +27,6 @@ const Portfolio: NextPage<Props> = (props) => {
         {props.contents.map((content) => {
           return (
             <div key={content.id} className="col-span-1">
-              <div className="text-center">
-                <Link href={`/Portfolio/${content.id}`}>
-                  <Title order={3}>{content.title}</Title>
-                </Link>
-              </div>
               {content.image?.url ? 
               <div>
                 <div className="hover:cursor-pointer">
@@ -58,6 +53,11 @@ const Portfolio: NextPage<Props> = (props) => {
                 </Link>
               </div>
             }
+              <div className="text-center text-blue-500 hover:text-blue-800 hover:cursor-pointer pt-4">
+                <Link href={`/Portfolio/${content.id}`}>
+                  <Title order={3}>{content.title}</Title>
+                </Link>
+              </div>
               <div>
                 <Text lineClamp={2}>
                   <div dangerouslySetInnerHTML={{ __html: content.body}} />
