@@ -8,9 +8,9 @@ type Props = {
 export const Layout = (props: Props) => {
   return (
     <div>
-      <div className="container mx-auto grid grid-rows-[auto,1fr,auto] min-h-screen">
+      <div className="grid grid-rows-[auto,1fr,auto] min-h-screen">
         <Header />
-        <main className="mx-20">{props.children}</main>
+        <main className="mx-4 sm:mx-20">{props.children}</main>
         <Footer />
       </div>
     </div>
