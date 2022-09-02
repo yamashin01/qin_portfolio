@@ -1,4 +1,4 @@
-import { Title } from "@mantine/core";
+import { Text, Title } from "@mantine/core";
 import { MicroCMSListResponse } from "microcms-js-sdk";
 import { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 const Blog: NextPage<Props> = (props) => {
   return (
     <>
-      <div className="border border-gray-200 py-4">
+      <div className="border-b-2 border-solid border-b-gray-100 border-x-white border-t-white py-4 mb-8">
         <Title>Blog</Title>
       </div>
       {props.contents.map((content) => {

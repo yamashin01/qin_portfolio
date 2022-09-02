@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 const Portfolio: NextPage<Props> = (props) => {
   return (
     <>
-      <div className="border border-gray-200 py-4">
+      <div className="border-b-2 border-solid border-b-gray-100 border-x-white border-t-white py-4 mb-8">
         <Title>Portfolio</Title>
       </div>
       <div className="grid md:grid-cols-3 gap-4">
