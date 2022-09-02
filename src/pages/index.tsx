@@ -1,4 +1,4 @@
-import { Button, Text, Title } from "@mantine/core";
+import { Button, Text, Title, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
 import Router from "next/router";
 import React from "react";
@@ -30,6 +30,8 @@ export const getStaticProps: GetStaticProps<MicroCMSProps> = async () => {
 };
 
 const Home: NextPage<MicroCMSProps> = (props) => {
+  const theme = useMantineTheme();
+
   const handleGoBlog = () => {
     Router.push("/Blog");
   };
@@ -97,7 +99,7 @@ const Home: NextPage<MicroCMSProps> = (props) => {
             ) : null;
           })}
           <div className="text-center">
-            <Button color="dark" radius="xl" onClick={handleGoBlog}>
+            <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" onClick={handleGoBlog}>
               View All
             </Button>
           </div>
@@ -137,7 +139,7 @@ const Home: NextPage<MicroCMSProps> = (props) => {
             })}
           </div>
           <div className="text-center">
-            <Button color="dark" radius="xl" onClick={handleGoPortfolio}>
+            <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" onClick={handleGoPortfolio}>
               View All
             </Button>
           </div>

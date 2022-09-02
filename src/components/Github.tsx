@@ -1,4 +1,4 @@
-import { Button, Title } from "@mantine/core";
+import { Button, Title, useMantineTheme } from "@mantine/core";
 import React from "react";
 import { FaRegStar, FaSourcetree } from "react-icons/fa";
 
@@ -35,6 +35,8 @@ const githubArticleList: GitHubType[] = [
 ];
 
 export const Github = () => {
+  const theme = useMantineTheme();
+
   const handleGoGithub = () => {
     window.location.href = "https://github.com/yamashin01";
   };
@@ -86,7 +88,7 @@ export const Github = () => {
         })}
       </div>
       <div className="text-center">
-        <Button color="dark" radius="xl" onClick={handleGoGithub}>
+        <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" onClick={handleGoGithub}>
           View on Github
         </Button>
       </div>
