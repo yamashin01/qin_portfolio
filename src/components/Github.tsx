@@ -41,7 +41,7 @@ export const Github = () => {
 
   return (
     <div className="w-full">
-      <div className="border border-gray-200 w-full py-4">
+      <div className="border-b-2 border-solid border-b-gray-100 border-x-white border-t-white py-4 mb-8">
         <Title>GitHub</Title>
       </div>
       <div>

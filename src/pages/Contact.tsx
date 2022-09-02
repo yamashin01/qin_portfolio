@@ -8,7 +8,7 @@ const Contact = () => {
 
   return (
     <div>
-      <div className="border border-gray-200 py-4">
+      <div className="border-b-2 border-solid border-b-gray-100 border-x-white border-t-white py-4 mb-8">
         <Title>Contact</Title>
       </div>
       <div className="gap-2">
