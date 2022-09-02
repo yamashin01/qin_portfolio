@@ -41,9 +41,10 @@ export const Github = () => {
 
   return (
     <div className="w-full">
-      <div className="border-b-2 border-solid border-b-gray-100 border-x-white border-t-white py-4 mb-8">
+      <div className="py-4">
         <Title>GitHub</Title>
       </div>
+      <div className="bg-gray-100 h-px rounded-full mb-8" />
       <div>
         {githubArticleList.map((githubArticle, index) => {
           return index < 5 ? (

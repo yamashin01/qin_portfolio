@@ -8,9 +8,10 @@ const Contact = () => {
 
   return (
     <div>
-      <div className="border-b-2 border-solid border-b-gray-100 border-x-white border-t-white py-4 mb-8">
+      <div className="py-4">
         <Title>Contact</Title>
       </div>
+      <div className="bg-gray-100 h-px rounded-full mb-8" />
       <div className="gap-2">
         <TextInput
           className="w-full py-4"

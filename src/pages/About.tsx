@@ -10,9 +10,10 @@ type Props = MicroCMSListResponse<AboutType>;
 const About:NextPage<Props> = (props) => {
   return (
     <>
-      <div className="border-b-2 border-solid border-b-gray-100 border-x-white border-t-white py-4 mb-8">
+      <div className="py-4">
         <Title>About</Title>
       </div>
+      <div className="bg-gray-100 h-px rounded-full mb-8" />
       <div>
         <div className="mb-4">
           <Title order={2}>{props.contents[0].name}</Title>

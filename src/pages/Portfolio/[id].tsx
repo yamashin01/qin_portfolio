@@ -26,6 +26,7 @@ const PortfolioId: NextPage<Props> = (props) => {
             : <Title order={2}>{props.title}</Title>
             }
         </div>
+        <div className="bg-gray-100 h-px rounded-full mb-8" />
         {props.image?.url ?
         <div className="items-center text-center">
             <Image

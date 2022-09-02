@@ -18,9 +18,10 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 const Blog: NextPage<Props> = (props) => {
   return (
     <>
-      <div className="border-b-2 border-solid border-b-gray-100 border-x-white border-t-white py-4 mb-8">
+      <div className="py-4">
         <Title>Blog</Title>
       </div>
+      <div className="bg-gray-100 h-px rounded-full mb-8" />
       {props.contents.map((content) => {
         return (
           <div key={content.id} className="mb-4">
