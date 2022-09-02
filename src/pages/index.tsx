@@ -40,15 +40,15 @@ const Home: NextPage<MicroCMSProps> = (props) => {
   return (
     <div>
       <div className="lg:flex bg-pink-500 text-white h-72 lg:h-56 justify-between mb-12 place-content-center">
-        <div className="ml-20">
-          <div className="text-3xl font-extrabold pt-20 align-middle">
+        <div className="ml-4 md:ml-20">
+          <div className="text-xl md:text-3xl font-extrabold pt-20 align-middle">
             Yama IT Portfolio
           </div>
           <div className="align-middle">
             ヤマのITポートフォリオのページです。
           </div>
         </div>
-        <div className="flex lg:mr-40 lg:ml-20 pt-4 lg:pt-24 lg:justify-between text-xl ml-20">
+        <div className="flex lg:mr-40 ml-4 md:ml-20 pt-4 lg:pt-24 lg:justify-between text-xl">
           <div className="mr-2 cursor-pointer">
             <Link href="https://twitter.com/yamashin0413">
               <FaTwitter />

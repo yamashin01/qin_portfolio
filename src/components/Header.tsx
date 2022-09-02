@@ -8,7 +8,7 @@ export const Header = () => {
 
   return (
     <header>
-      <nav className="py-2.5 mx-20">
+      <nav className="py-2.5 sm:mx-20 mx-4">
         <div className="flex flex-wrap md:justify-between">
           <button
             className="md:hidden bg-white border-none mr-4 hover:cursor-pointer text-lg"
