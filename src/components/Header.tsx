@@ -1,15 +1,18 @@
+import { ActionIcon, useMantineColorScheme } from "@mantine/core";
 import Link from "next/link";
 import React, { useState } from "react";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaRegMoon, FaSun } from "react-icons/fa";
 import { menuList, MenuModal } from "src/components/MenuModal";
 
 export const Header = () => {
   const [isOpened, setIsOpened] = useState(false);
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const dark = colorScheme === 'dark';
 
   return (
     <header>
       <nav className="py-2.5 sm:mx-20 mx-4">
-        <div className="flex flex-wrap md:justify-between">
+        <div className="flex flex-wrap justify-between items-center">
           <button
             className="md:hidden bg-white border-none mr-4 hover:cursor-pointer text-lg"
             onClick={() => setIsOpened(true)}
@@ -17,11 +20,11 @@ export const Header = () => {
             <FaBars />
           </button>
           <Link href="/" className="flex items-center no-underline place-items-center">
-            <span className="font-bold text-gray-700 hover:cursor-pointer place-items-center items-center">
+            <span className="font-bold hover:cursor-pointer place-items-center items-center">
               Yama IT Portfolio
             </span>
           </Link>
-          <div className="justify-between flex w-auto">
+          <div className="justify-between flex w-auto items-center">
             <ul className="md:flex hidden mt-4 flex-row md:space-x-8 lg:mt-0 list-none font-bold">
               {menuList.map((menu, index) => {
                 return (
@@ -37,6 +40,16 @@ export const Header = () => {
                 );
               })}
             </ul>
+            <div className="ml-4 justify-end right-4">
+              <ActionIcon
+                variant="outline"
+                color={dark ? 'yellow' : 'blue'}
+                onClick={() => toggleColorScheme()}
+                title="Toggle color scheme"
+              >
+                {dark ? <FaSun size={18} /> : <FaRegMoon size={18} />}
+              </ActionIcon>            
+            </div>
           </div>
         </div>
         <MenuModal isOpened={isOpened} setIsOpened={setIsOpened} />
