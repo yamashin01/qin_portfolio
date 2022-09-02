@@ -51,17 +51,23 @@ const Home: NextPage<MicroCMSProps> = (props) => {
         <div className="flex lg:mr-40 ml-4 md:ml-20 pt-4 lg:pt-24 lg:justify-between text-xl">
           <div className="mr-2 cursor-pointer">
             <Link href="https://twitter.com/yamashin0413">
-              <FaTwitter />
+              <>
+                <FaTwitter />
+              </>
             </Link>
           </div>
           <div className="mr-2 cursor-pointer">
             <Link href="https://www.facebook.com/syamada01">
-              <FaFacebook />
+              <>
+                <FaFacebook />
+              </>
             </Link>
           </div>
           <div className="mr-2 cursor-pointer">
             <Link href="/">
-              <FaRss />
+              <>
+                <FaRss />
+              </>
             </Link>
           </div>
         </div>
@@ -108,12 +114,14 @@ const Home: NextPage<MicroCMSProps> = (props) => {
                 <div key={index} className="mb-4">
                   <div className="hover:cursor-pointer text-center">
                     <Link href={`/Portfolio/${content.id}`}>
-                      <Image
-                        src={portfolioImg}
-                        alt="portfolioImg"
-                        width={360}
-                        height={240}
+                      <>
+                        <Image
+                          src={portfolioImg}
+                          alt="portfolioImg"
+                          width={360}
+                          height={240}
                         />
+                      </>
                     </Link>
                   </div>
                   <div className="hover:cursor-pointer text-blue-500 hover:text-blue-800">
