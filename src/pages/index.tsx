@@ -48,7 +48,7 @@ const Home: NextPage<MicroCMSProps> = (props) => {
             ヤマのITポートフォリオのページです。
           </div>
         </div>
-        <div className="flex lg:mr-40 ml-4 lg:ml-20 pt-4 lg:pt-24 lg:justify-between text-xl ml-20">
+        <div className="flex lg:mr-40 lg:ml-20 pt-4 lg:pt-24 lg:justify-between text-xl ml-20">
           <div className="mr-2 cursor-pointer">
             <Link href="https://twitter.com/yamashin0413">
               <FaTwitter />
