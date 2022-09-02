@@ -39,8 +39,8 @@ const Home: NextPage<MicroCMSProps> = (props) => {
 
   return (
     <div>
-      <div className="md:flex bg-pink-500 text-white h-72 md:h-56 justify-between mb-12 place-content-center">
-        <div className="ml-4 md:ml-20">
+      <div className="lg:flex bg-pink-500 text-white h-72 lg:h-56 justify-between mb-12 place-content-center">
+        <div className="ml-20">
           <div className="text-3xl font-extrabold pt-20 align-middle">
             Yama IT Portfolio
           </div>
@@ -48,7 +48,7 @@ const Home: NextPage<MicroCMSProps> = (props) => {
             ヤマのITポートフォリオのページです。
           </div>
         </div>
-        <div className="flex md:mr-40 ml-4 md:ml-20 pt-4 md:pt-24 md:justify-between text-xl">
+        <div className="flex lg:mr-40 ml-4 lg:ml-20 pt-4 lg:pt-24 lg:justify-between text-xl ml-20">
           <div className="mr-2 cursor-pointer">
             <Link href="https://twitter.com/yamashin0413">
               <FaTwitter />
@@ -104,7 +104,7 @@ const Home: NextPage<MicroCMSProps> = (props) => {
             {props.portfolioData.contents.map((content, index) => {
               return index < 6 ? (
                 <div key={index} className="mb-4">
-                  <div className="hover:cursor-pointer">
+                  <div className="hover:cursor-pointer text-center">
                     <Link href={`/Portfolio/${content.id}`}>
                       <Image
                         src={portfolioImg}
