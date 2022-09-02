@@ -14,7 +14,7 @@ export const Header = () => {
       <nav className="py-2.5 sm:mx-20 mx-4">
         <div className="flex flex-wrap justify-between items-center">
           <button
-            className="md:hidden bg-white border-none mr-4 hover:cursor-pointer text-lg"
+            className="md:hidden border-none mr-4 hover:cursor-pointer text-lg"
             onClick={() => setIsOpened(true)}
           >
             <FaBars />
