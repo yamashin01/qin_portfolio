@@ -1,4 +1,4 @@
-import { Modal } from "@mantine/core";
+import { Modal, useMantineTheme } from "@mantine/core";
 import Router from "next/router";
 
 type MenuType = {
@@ -29,6 +29,8 @@ type Props = {
   setIsOpened: React.Dispatch<boolean>;
 };
 export const MenuModal = (props: Props) => {
+  const theme = useMantineTheme();
+
   const closeModal = () => {
     props.setIsOpened(false);
   };
@@ -41,20 +43,18 @@ export const MenuModal = (props: Props) => {
   return (
     <>
       <Modal
+        overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
+        color={theme.colorScheme === 'dark' ? 'blue' : 'white'}
         opened={props.isOpened}
         onClose={closeModal}
-        className="bg-pink-500"
       >
         <section>
           {menuList.map((menu, index) => {
             return (
               <div key={index} className="my-4">
-                <button
-                  className="text-black bg-transparent text-xl border-none"
-                  onClick={() => handleGoPage(menu.link)}
-                >
+                <div className="text-xl" onClick={() => handleGoPage(menu.link)}>
                   {menu.name}
-                </button>
+                </div>
               </div>
             );
           })}

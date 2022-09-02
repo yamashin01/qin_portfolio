@@ -1,4 +1,4 @@
-import { Button, Text, Title } from "@mantine/core";
+import { Button, Text, Title, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
 import Router from "next/router";
 import React from "react";
@@ -30,6 +30,8 @@ export const getStaticProps: GetStaticProps<MicroCMSProps> = async () => {
 };
 
 const Home: NextPage<MicroCMSProps> = (props) => {
+  const theme = useMantineTheme();
+
   const handleGoBlog = () => {
     Router.push("/Blog");
   };
@@ -51,17 +53,23 @@ const Home: NextPage<MicroCMSProps> = (props) => {
         <div className="flex lg:mr-40 ml-4 md:ml-20 pt-4 lg:pt-24 lg:justify-between text-xl">
           <div className="mr-2 cursor-pointer">
             <Link href="https://twitter.com/yamashin0413">
-              <FaTwitter />
+              <>
+                <FaTwitter />
+              </>
             </Link>
           </div>
           <div className="mr-2 cursor-pointer">
             <Link href="https://www.facebook.com/syamada01">
-              <FaFacebook />
+              <>
+                <FaFacebook />
+              </>
             </Link>
           </div>
           <div className="mr-2 cursor-pointer">
             <Link href="/">
-              <FaRss />
+              <>
+                <FaRss />
+              </>
             </Link>
           </div>
         </div>
@@ -91,7 +99,7 @@ const Home: NextPage<MicroCMSProps> = (props) => {
             ) : null;
           })}
           <div className="text-center">
-            <Button color="dark" radius="xl" onClick={handleGoBlog}>
+            <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" onClick={handleGoBlog}>
               View All
             </Button>
           </div>
@@ -108,12 +116,14 @@ const Home: NextPage<MicroCMSProps> = (props) => {
                 <div key={index} className="mb-4">
                   <div className="hover:cursor-pointer text-center">
                     <Link href={`/Portfolio/${content.id}`}>
-                      <Image
-                        src={portfolioImg}
-                        alt="portfolioImg"
-                        width={360}
-                        height={240}
+                      <>
+                        <Image
+                          src={portfolioImg}
+                          alt="portfolioImg"
+                          width={360}
+                          height={240}
                         />
+                      </>
                     </Link>
                   </div>
                   <div className="hover:cursor-pointer text-blue-500 hover:text-blue-800">
@@ -129,7 +139,7 @@ const Home: NextPage<MicroCMSProps> = (props) => {
             })}
           </div>
           <div className="text-center">
-            <Button color="dark" radius="xl" onClick={handleGoPortfolio}>
+            <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" onClick={handleGoPortfolio}>
               View All
             </Button>
           </div>

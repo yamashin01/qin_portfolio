@@ -1,4 +1,4 @@
-import { Button, Title } from "@mantine/core";
+import { Button, Title, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
 import twitterIcon from "public/myImage.jpeg";
@@ -67,6 +67,8 @@ https://www.noway-form.com/ja`,
 ];
 
 export const Twitter = () => {
+  const theme = useMantineTheme();
+
   const handleGoTwitter = () => {
     window.location.href = "https://twitter.com/yamashin0413";
   };
@@ -106,7 +108,7 @@ export const Twitter = () => {
         })}
       </div>
       <div className="text-center">
-        <Button color="dark" radius="xl" onClick={handleGoTwitter}>
+        <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" onClick={handleGoTwitter}>
           View on Twitter
         </Button>
       </div>

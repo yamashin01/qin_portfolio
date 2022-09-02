@@ -1,10 +1,12 @@
-import { Button, Textarea, TextInput, Title } from "@mantine/core";
+import { Button, Textarea, TextInput, Title, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
 
 const Contact = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+
+  const theme = useMantineTheme();
 
   return (
     <div>
@@ -33,7 +35,7 @@ const Contact = () => {
         />
       </div>
       <div className="text-center py-4">
-        <Button color="dark" radius="xl">
+        <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl">
           Send Message
         </Button>
       </div>
