@@ -39,9 +39,9 @@ const Home: NextPage<MicroCMSProps> = (props) => {
 
   return (
     <div>
-      <div className="lg:flex bg-pink-500 text-white h-72 lg:h-56 justify-between mb-12 place-content-center">
+      <div className="lg:flex bg-blue-800 text-white h-56 justify-between mb-12 place-content-center">
         <div className="ml-4 md:ml-20">
-          <div className="text-xl md:text-3xl font-extrabold pt-20 align-middle">
+          <div className="text-xl md:text-3xl font-extrabold pt-12 lg:pt-20 align-middle">
             Yama IT Portfolio
           </div>
           <div className="align-middle">
