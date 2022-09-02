@@ -20,9 +20,10 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 const Portfolio: NextPage<Props> = (props) => {
   return (
     <>
-      <div className="border-b-2 border-solid border-b-gray-100 border-x-white border-t-white py-4 mb-8">
+      <div className="py-4">
         <Title>Portfolio</Title>
       </div>
+      <div className="bg-gray-100 h-px rounded-full mb-8" />
       <div className="grid md:grid-cols-3 gap-4">
         {props.contents.map((content) => {
           return (

@@ -73,9 +73,10 @@ export const Twitter = () => {
 
   return (
     <div className="w-full">
-      <div className="border-b-2 border-solid border-b-gray-100 border-x-white border-t-white py-4 mb-8">
+      <div className="py-4">
         <Title>Twitter</Title>
       </div>
+      <div className="bg-gray-100 h-px rounded-full mb-8" />
       <div>
         {twitterArticleList.map((twitterArticle, index) => {
           return index < 3 ? (

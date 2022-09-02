@@ -10,6 +10,7 @@ const BlogId: NextPage<Props> = (props) => {
   return (
     <div>
       <h1>{props.title}</h1>
+      <div className="bg-gray-100 h-px rounded-full mb-8" />
       <time>{format(new Date(props.publishedAt), "yyyy.MM.dd")}</time>
       <div dangerouslySetInnerHTML={{ __html: props.body }} />
     </div>

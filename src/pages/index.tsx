@@ -69,9 +69,10 @@ const Home: NextPage<MicroCMSProps> = (props) => {
 
       <div>
         <div>
-          <div className="border-b-2 border-solid border-b-gray-100 border-x-white border-t-white py-4 mb-8">
+          <div className="py-4">
             <Title>Blog</Title>
           </div>
+          <div className="bg-gray-100 h-px rounded-full mb-8" />
           {props.blogData.contents.map((content, index) => {
             return index < 5 ? (
               <div key={content.id} className="mb-4">
@@ -97,9 +98,10 @@ const Home: NextPage<MicroCMSProps> = (props) => {
         </div>
 
         <div className="my-20">
-          <div className="border-b-2 border-solid border-b-gray-100 border-x-white border-t-white py-4 mb-8">
+          <div className="py-4">
             <Title>Portfolio</Title>
           </div>
+          <div className="bg-gray-100 h-px rounded-full mb-8" />
           <div className="grid md:grid-cols-3 gap-4">
             {props.portfolioData.contents.map((content, index) => {
               return index < 6 ? (
