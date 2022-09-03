@@ -3,32 +3,39 @@ import React from "react";
 import { FaRegStar, FaSourcetree } from "react-icons/fa";
 
 type GitHubType = {
+  id: number;
   title: string;
   article: string;
 };
 
 const githubArticleList: GitHubType[] = [
   {
+    id: 0,
     title: "lightsound/next-tailwind",
     article: "Next.js starter template.",
   },
   {
+    id: 1,
     title: "lightsound/next-tailwind",
     article: "Next.js starter template.",
   },
   {
+    id: 2,
     title: "lightsound/next-tailwind",
     article: "Next.js starter template.",
   },
   {
+    id: 3,
     title: "lightsound/next-tailwind",
     article: "Next.js starter template.",
   },
   {
+    id: 4,
     title: "lightsound/next-tailwind",
     article: "Next.js starter template.",
   },
   {
+    id: 5,
     title: "lightsound/next-tailwind",
     article: "Next.js starter template.",
   },
@@ -50,7 +57,7 @@ export const Github = () => {
       <div>
         {githubArticleList.map((githubArticle, index) => {
           return index < 5 ? (
-            <div key={index} className="mb-8">
+            <div key={githubArticle.id} className="mb-8">
               <p className="my-2">{githubArticle.title}</p>
               <p className="text-gray-600 my-2 text-sm">
                 {githubArticle.article}

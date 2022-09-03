@@ -4,6 +4,7 @@ import React from "react";
 import twitterIcon from "public/myImage.jpeg";
 
 type TwitterType = {
+  id: number;
   title: string;
   account: string;
   article?: string;
@@ -11,6 +12,7 @@ type TwitterType = {
 
 const twitterArticleList: TwitterType[] = [
   {
+    id: 0,
     title: "ヤマさん@システムエンジニアからWebエンジニアへ",
     account: "@yamashin0413・5月25日",
     article: `📯新サービス「Noway Form」をリリースしました！
@@ -20,6 +22,7 @@ Noway Formは、Notionのデータベースをもとにフォームを作成で�
 https://www.noway-form.com/ja`,
   },
   {
+    id: 1,
     title: "ヤマさん@システムエンジニアからWebエンジニアへ",
     account: "@yamashin0413・5月25日",
     article: `📯新サービス「Noway Form」をリリースしました！
@@ -29,6 +32,7 @@ Noway Formは、Notionのデータベースをもとにフォームを作成で�
 https://www.noway-form.com/ja`,
   },
   {
+    id: 2,
     title: "ヤマさん@システムエンジニアからWebエンジニアへ",
     account: "@yamashin0413・5月25日",
     article: `📯新サービス「Noway Form」をリリースしました！
@@ -38,6 +42,7 @@ Noway Formは、Notionのデータベースをもとにフォームを作成で�
 https://www.noway-form.com/ja`,
   },
   {
+    id: 3,
     title: "ヤマさん@システムエンジニアからWebエンジニアへ",
     account: "@yamashin0413・5月25日",
     article: `📯新サービス「Noway Form」をリリースしました！
@@ -47,6 +52,7 @@ Noway Formは、Notionのデータベースをもとにフォームを作成で�
 https://www.noway-form.com/ja`,
   },
   {
+    id: 4,
     title: "ヤマさん@システムエンジニアからWebエンジニアへ",
     account: "@yamashin0413・5月25日",
     article: `📯新サービス「Noway Form」をリリースしました！
@@ -56,6 +62,7 @@ Noway Formは、Notionのデータベースをもとにフォームを作成で�
 https://www.noway-form.com/ja`,
   },
   {
+    id: 5,
     title: "ヤマさん@システムエンジニアからWebエンジニアへ",
     account: "@yamashin0413・5月25日",
     article: `📯新サービス「Noway Form」をリリースしました！
@@ -82,7 +89,7 @@ export const Twitter = () => {
       <div>
         {twitterArticleList.map((twitterArticle, index) => {
           return index < 3 ? (
-            <div key={index} className="mb-8 flex">
+            <div key={twitterArticle.id} className="mb-8 flex">
               <div className="m-2">
                 <Image
                   src={twitterIcon}

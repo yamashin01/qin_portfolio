@@ -26,9 +26,9 @@ export const Header = () => {
           </Link>
           <div className="justify-between flex w-auto items-center">
             <ul className="md:flex hidden mt-4 flex-row md:space-x-8 list-none font-bold">
-              {menuList.map((menu, index) => {
+              {menuList.map((menu) => {
                 return (
-                  <li key={index}>
+                  <li key={menu.id}>
                     <Link
                       href={menu.link}
                       className="block px-4 text-gray-700 no-underline rounded bg-primary-700 md:p-0 dark:text-white"

@@ -113,7 +113,7 @@ const Home: NextPage<MicroCMSProps> = (props) => {
           <div className="grid md:grid-cols-3 gap-4">
             {props.portfolioData.contents.map((content, index) => {
               return index < 6 ? (
-                <div key={index} className="mb-4">
+                <div key={content.id} className="mb-4">
                   <div className="hover:cursor-pointer text-center">
                     <Link href={`/Portfolio/${content.id}`}>
                       <>
