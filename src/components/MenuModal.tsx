@@ -1,24 +1,30 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import Router from "next/router";
+import React from "react";
 
 type MenuType = {
+  id: number;
   name: string;
   link: string;
 };
 export const menuList: MenuType[] = [
   {
+    id: 0,
     name: "About",
     link: "/About",
   },
   {
+    id: 1,
     name: "Blog",
     link: "/Blog",
   },
   {
+    id: 2,
     name: "Portfolio",
     link: "/Portfolio",
   },
   {
+    id: 3,
     name: "Contact",
     link: "/Contact",
   },
@@ -49,9 +55,9 @@ export const MenuModal = (props: Props) => {
         onClose={closeModal}
       >
         <section>
-          {menuList.map((menu, index) => {
+          {menuList.map((menu) => {
             return (
-              <div key={index} className="my-4">
+              <div key={menu.id} className="my-4">
                 <div className="text-xl" onClick={() => handleGoPage(menu.link)}>
                   {menu.name}
                 </div>

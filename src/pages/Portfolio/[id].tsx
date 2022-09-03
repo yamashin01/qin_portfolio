@@ -6,13 +6,14 @@ import Link from "next/link";
 import Router from "next/router";
 import { client } from "src/libs/client";
 import { PortfolioType } from "src/types/types";
+import React from "react";
 
 type Props = PortfolioType & MicroCMSContentId & MicroCMSDate;
 
 const PortfolioId: NextPage<Props> = (props) => {
     const handleBack = () => {
         Router.back();
-    }
+    };
   return (
     <div className="container w-auto">
       <div className="mb-8">
@@ -51,7 +52,7 @@ export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
   const ids = data.contents.map((content) => `/Portfolio/${content.id}`);
   return {
     paths: ids,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
@@ -68,6 +69,7 @@ export const getStaticProps: GetStaticProps<Props, { id: string }> = async (
 
   return {
     props: data,
+    revalidate: 1,  // regenerated once in 1 seconds
   };
 };
 export default PortfolioId;

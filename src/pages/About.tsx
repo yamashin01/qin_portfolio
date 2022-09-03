@@ -4,6 +4,7 @@ import { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import { client } from "src/libs/client";
 import { AboutType } from "src/types/types";
+import React from "react";
 
 type Props = MicroCMSListResponse<AboutType>;
 

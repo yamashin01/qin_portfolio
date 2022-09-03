@@ -1,5 +1,6 @@
 import { Button, Textarea, TextInput, Title, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
+import React from "react";
 
 const Contact = () => {
   const [email, setEmail] = useState("");

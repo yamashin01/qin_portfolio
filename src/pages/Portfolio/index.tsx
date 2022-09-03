@@ -7,6 +7,7 @@ import { client } from "src/libs/client";
 import { format } from "date-fns";
 import alt_image from "public/programing_img.jpg";
 import { PortfolioType } from "src/types/types";
+import React from "react";
 
 type Props = MicroCMSListResponse<PortfolioType>;
 
@@ -31,26 +32,30 @@ const Portfolio: NextPage<Props> = (props) => {
               {content.image?.url ? 
               <div>
                 <div className="hover:cursor-pointer">
-                  <Link href={`/Portfolio/${content.id}`}>
-                    <Image
-                      src={content.image.url}
-                      alt="portfolioImg"
-                      width={360}
-                      height={240}
-                      layout="responsive"
+                  <Link href={`/Portfolio/${content.id}`} prefetch={false}>
+                    <>
+                      <Image
+                        src={content.image.url}
+                        alt="portfolioImg"
+                        width={360}
+                        height={240}
+                        layout="responsive"
                       />
+                    </>
                   </Link>
                 </div>
               </div> : 
-                <div className="hover:cursor-pointer">
-                <Link href={`/Portfolio/${content.id}`}>
-                  <Image
-                    src={alt_image}
-                    alt="alt_image"
-                    width={360}
-                    height={240}
-                    layout="responsive"
+              <div className="hover:cursor-pointer">
+                <Link href={`/Portfolio/${content.id}`} prefetch={false}>
+                  <>
+                    <Image
+                      src={alt_image}
+                      alt="alt_image"
+                      width={360}
+                      height={240}
+                      layout="responsive"
                     />
+                  </>
                 </Link>
               </div>
             }
@@ -68,7 +73,7 @@ const Portfolio: NextPage<Props> = (props) => {
                 <small>{format(new Date(content.publishedAt), "yyyy.MM.dd")}</small>
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </>

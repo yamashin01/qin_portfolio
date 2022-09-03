@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import { Layout } from "../components/Layout";
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from "@mantine/core";
 import { useState } from "react";
+import React from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');

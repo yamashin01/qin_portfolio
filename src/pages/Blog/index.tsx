@@ -5,6 +5,7 @@ import Link from "next/link";
 import { client } from "src/libs/client";
 import { BlogType } from "src/types/types";
 import { format } from "date-fns";
+import React from "react";
 
 type Props = MicroCMSListResponse<BlogType>;
 
@@ -12,6 +13,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const data = await client.getList<BlogType>({ endpoint: "blog" });
   return {
     props: data,
+    revalidate: 1, // regenerated once in 1 seconds
   };
 };
 
@@ -26,7 +28,7 @@ const Blog: NextPage<Props> = (props) => {
         return (
           <div key={content.id} className="mb-4">
             <div className="no-underline text-blue-500 hover:text-blue-800 hover:cursor-pointer text-xl">
-              <Link href={`/Blog/${content.id}`}>
+              <Link href={`/Blog/${content.id}`} prefetch={false}>
                 <Text>{content.title}</Text>
               </Link>
             </div>

@@ -3,6 +3,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { client } from "src/libs/client";
 import { format } from "date-fns";
 import { BlogType } from "src/types/types";
+import React from "react";
 
 type Props = BlogType & MicroCMSContentId & MicroCMSDate;
 
@@ -22,7 +23,7 @@ export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
   const ids = data.contents.map((content) => `/Blog/${content.id}`);
   return {
     paths: ids,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
