@@ -5,6 +5,7 @@ import Link from "next/link";
 import { client } from "src/libs/client";
 import { BlogType } from "src/types/types";
 import { format } from "date-fns";
+import React from "react";
 
 type Props = MicroCMSListResponse<BlogType>;
 

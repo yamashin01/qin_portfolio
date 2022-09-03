@@ -7,6 +7,7 @@ import { client } from "src/libs/client";
 import { format } from "date-fns";
 import alt_image from "public/programing_img.jpg";
 import { PortfolioType } from "src/types/types";
+import React from "react";
 
 type Props = MicroCMSListResponse<PortfolioType>;
 
@@ -68,7 +69,7 @@ const Portfolio: NextPage<Props> = (props) => {
                 <small>{format(new Date(content.publishedAt), "yyyy.MM.dd")}</small>
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </>

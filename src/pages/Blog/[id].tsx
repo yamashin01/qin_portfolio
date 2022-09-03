@@ -3,6 +3,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { client } from "src/libs/client";
 import { format } from "date-fns";
 import { BlogType } from "src/types/types";
+import React from "react";
 
 type Props = BlogType & MicroCMSContentId & MicroCMSDate;
 

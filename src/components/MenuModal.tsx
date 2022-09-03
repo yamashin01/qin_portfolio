@@ -1,5 +1,6 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import Router from "next/router";
+import React from "react";
 
 type MenuType = {
   name: string;
