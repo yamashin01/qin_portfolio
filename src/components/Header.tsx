@@ -25,7 +25,7 @@ export const Header = () => {
             </span>
           </Link>
           <div className="justify-between flex w-auto items-center">
-            <ul className="md:flex hidden mt-4 flex-row md:space-x-8 lg:mt-0 list-none font-bold">
+            <ul className="md:flex hidden mt-4 flex-row md:space-x-8 list-none font-bold">
               {menuList.map((menu, index) => {
                 return (
                   <li key={index}>
