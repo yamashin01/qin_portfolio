@@ -33,25 +33,29 @@ const Portfolio: NextPage<Props> = (props) => {
               <div>
                 <div className="hover:cursor-pointer">
                   <Link href={`/Portfolio/${content.id}`}>
-                    <Image
-                      src={content.image.url}
-                      alt="portfolioImg"
-                      width={360}
-                      height={240}
-                      layout="responsive"
+                    <>
+                      <Image
+                        src={content.image.url}
+                        alt="portfolioImg"
+                        width={360}
+                        height={240}
+                        layout="responsive"
                       />
+                    </>
                   </Link>
                 </div>
               </div> : 
                 <div className="hover:cursor-pointer">
                 <Link href={`/Portfolio/${content.id}`}>
-                  <Image
-                    src={alt_image}
-                    alt="alt_image"
-                    width={360}
-                    height={240}
-                    layout="responsive"
+                  <>
+                    <Image
+                      src={alt_image}
+                      alt="alt_image"
+                      width={360}
+                      height={240}
+                      layout="responsive"
                     />
+                  </>
                 </Link>
               </div>
             }
