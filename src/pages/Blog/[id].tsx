@@ -40,6 +40,7 @@ export const getStaticProps: GetStaticProps<Props, { id: string }> = async (
 
   return {
     props: data,
+    revalidate: 10,  // regenerated once in 10 seconds
   };
 };
 export default BlogId;
