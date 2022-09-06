@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps<Props, { id: string }> = async (
 
   return {
     props: data,
-    revalidate: 1,  // regenerated once in 1 seconds
+    revalidate: 10,  // regenerated once in 10 seconds
   };
 };
 export default PortfolioId;
