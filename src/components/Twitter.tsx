@@ -1,80 +1,12 @@
 import { Button, Title, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
-import React from "react";
+import React, { FC } from "react";
 import twitterIcon from "public/myImage.jpeg";
+import { TwitterType } from "src/types/types";
 
-type TwitterType = {
-  id: number;
-  title: string;
-  account: string;
-  article?: string;
-};
-
-const twitterArticleList: TwitterType[] = [
-  {
-    id: 0,
-    title: "ヤマさん@システムエンジニアからWebエンジニアへ",
-    account: "@yamashin0413・5月25日",
-    article: `📯新サービス「Noway Form」をリリースしました！
-Noway Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle FormでやっていたことがNotionだけで完結します✌️✨
-試しに使っていただけると幸いです😊
-
-https://www.noway-form.com/ja`,
-  },
-  {
-    id: 1,
-    title: "ヤマさん@システムエンジニアからWebエンジニアへ",
-    account: "@yamashin0413・5月25日",
-    article: `📯新サービス「Noway Form」をリリースしました！
-Noway Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle FormでやっていたことがNotionだけで完結します✌️✨
-試しに使っていただけると幸いです😊
-      
-https://www.noway-form.com/ja`,
-  },
-  {
-    id: 2,
-    title: "ヤマさん@システムエンジニアからWebエンジニアへ",
-    account: "@yamashin0413・5月25日",
-    article: `📯新サービス「Noway Form」をリリースしました！
-Noway Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle FormでやっていたことがNotionだけで完結します✌️✨
-試しに使っていただけると幸いです😊
-
-https://www.noway-form.com/ja`,
-  },
-  {
-    id: 3,
-    title: "ヤマさん@システムエンジニアからWebエンジニアへ",
-    account: "@yamashin0413・5月25日",
-    article: `📯新サービス「Noway Form」をリリースしました！
-Noway Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle FormでやっていたことがNotionだけで完結します✌️✨
-試しに使っていただけると幸いです😊
-
-https://www.noway-form.com/ja`,
-  },
-  {
-    id: 4,
-    title: "ヤマさん@システムエンジニアからWebエンジニアへ",
-    account: "@yamashin0413・5月25日",
-    article: `📯新サービス「Noway Form」をリリースしました！
-Noway Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle FormでやっていたことがNotionだけで完結します✌️✨
-試しに使っていただけると幸いです😊
-
-https://www.noway-form.com/ja`,
-  },
-  {
-    id: 5,
-    title: "ヤマさん@システムエンジニアからWebエンジニアへ",
-    account: "@yamashin0413・5月25日",
-    article: `📯新サービス「Noway Form」をリリースしました！
-Noway Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle FormでやっていたことがNotionだけで完結します✌️✨
-試しに使っていただけると幸いです😊
-
-https://www.noway-form.com/ja`,
-  },
-];
-
-export const Twitter = () => {
+export const Twitter: FC<TwitterType> = (props) => {
   const theme = useMantineTheme();
+  const { profile, tweets } = props;
 
   const handleGoTwitter = () => {
     window.location.href = "https://twitter.com/yamashin0413";
@@ -87,27 +19,27 @@ export const Twitter = () => {
       </div>
       <div className="bg-gray-100 h-px rounded-full mb-8" />
       <div>
-        {twitterArticleList.map((twitterArticle, index) => {
+        {tweets.map((tweet, index) => {
           return index < 3 ? (
-            <div key={twitterArticle.id} className="mb-8 flex">
+            <div key={tweet.id} className="mb-8 flex">
               <div className="m-2">
                 <Image
                   src={twitterIcon}
                   alt="twitter-icon"
-                  width={150}
-                  height={150}
+                  width={100}
+                  height={100}
                   className="items-center rounded-full"
                 />
               </div>
               <div>
                 <div className="flex">
-                  <div className="mr-2">{twitterArticle.title}</div>
+                  <div className="mr-2">{profile.name}</div>
                   <div className="text-xs text-gray-600 align-middle">
-                    {twitterArticle.account}
+                    {`@${profile.username}`}
                   </div>
                 </div>
                 <p className="text-gray-600 my-2 text-sm whitespace-pre-wrap">
-                  {twitterArticle.article}
+                  {tweet.text}
                 </p>
               </div>
             </div>

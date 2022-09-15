@@ -9,28 +9,38 @@ import { Twitter } from "src/components/Twitter";
 import Link from "next/link";
 import { GetStaticProps, NextPage } from "next";
 import { client } from "src/libs/client";
-import { MicroCMSListResponse } from "microcms-js-sdk";
 import { format } from "date-fns";
-import { BlogType, PortfolioType } from "src/types/types";
+import { BlogType, IndexProps, PortfolioType } from "src/types/types";
+import { TwitterApi } from "twitter-api-v2";
 
-export type MicroCMSProps = {
-  blogData: MicroCMSListResponse<BlogType>;
-  portfolioData: MicroCMSListResponse<PortfolioType>;
-};
-
-export const getStaticProps: GetStaticProps<MicroCMSProps> = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const blogData = await client.getList<BlogType>({ endpoint: "blog" });
   const portfolioData = await client.getList<PortfolioType>({ endpoint: "portfolio" });
+
+  // Twitter
+  // https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/user
+  // https://github.com/PLhery/node-twitter-api-v2/blob/3d3dad74fc9e0870f1f30121286336ecce6a54eb/doc/v2.md#Users
+  // https://developer.twitter.com/en/docs/twitter-api/pagination
+  // https://github.com/PLhery/node-twitter-api-v2
+  const twitterClient = new TwitterApi(process.env.TWITTER_BEARER_TOKEN || "");
+  const readOnlyClient = twitterClient.readOnly;
+  const { data } = await readOnlyClient.v2.userByUsername("yamashin0413", {
+    "user.fields": ["profile_image_url"],
+  });
+  const { tweets } = await twitterClient.v2.userTimeline(data.id, { "tweet.fields": ["created_at"], max_results: 5 });
+
   return {
     props: {
       blogData,
       portfolioData,
+      twitterData: { profile: data, tweets }
     }
   };
 };
 
-const Home: NextPage<MicroCMSProps> = (props) => {
+const Home: NextPage<IndexProps> = (props) => {
   const theme = useMantineTheme();
+  const { blogData, portfolioData, twitterData } = props;
 
   const handleGoBlog = () => {
     Router.push("/Blog");
@@ -81,7 +91,7 @@ const Home: NextPage<MicroCMSProps> = (props) => {
             <Title>Blog</Title>
           </div>
           <div className="bg-gray-100 h-px rounded-full mb-8" />
-          {props.blogData.contents.map((content, index) => {
+          {blogData.contents.map((content, index) => {
             return index < 5 ? (
               <div key={content.id} className="mb-4">
                 <div className="hover:cursor-pointer text-blue-500 hover:text-blue-800">
@@ -111,7 +121,7 @@ const Home: NextPage<MicroCMSProps> = (props) => {
           </div>
           <div className="bg-gray-100 h-px rounded-full mb-8" />
           <div className="grid md:grid-cols-3 gap-4">
-            {props.portfolioData.contents.map((content, index) => {
+            {portfolioData.contents.map((content, index) => {
               return index < 6 ? (
                 <div key={content.id} className="mb-4">
                   <div className="hover:cursor-pointer text-center">
@@ -147,7 +157,7 @@ const Home: NextPage<MicroCMSProps> = (props) => {
         <div className="md:flex my-20 justify-between">
           <Github />
           <div className="w-1/6"></div>
-          <Twitter />
+          <Twitter {...twitterData} />
         </div>
       </div>
     </div>
