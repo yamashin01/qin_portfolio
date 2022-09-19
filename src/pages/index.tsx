@@ -42,13 +42,6 @@ const Home: NextPage<IndexProps> = (props) => {
   const theme = useMantineTheme();
   const { blogData, portfolioData, twitterData } = props;
 
-  const handleGoBlog = () => {
-    Router.push("/Blog");
-  };
-  const handleGoPortfolio = () => {
-    Router.push("/Portfolio");
-  };
-
   return (
     <div>
       <div className="lg:flex bg-blue-800 text-white h-56 justify-between mb-12 place-content-center">
@@ -109,9 +102,9 @@ const Home: NextPage<IndexProps> = (props) => {
             ) : null;
           })}
           <div className="text-center">
-            <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" onClick={handleGoBlog}>
-              View All
-            </Button>
+            <Link href="/Blog" passHref>
+              <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" component="a">View All</Button>
+            </Link>
           </div>
         </div>
 
@@ -149,9 +142,9 @@ const Home: NextPage<IndexProps> = (props) => {
             })}
           </div>
           <div className="text-center">
-            <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" onClick={handleGoPortfolio}>
-              View All
-            </Button>
+            <Link href="/Portfolio" passHref>
+              <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" component="a">View All</Button>
+            </Link>
           </div>
         </div>
         <div className="md:flex my-20 justify-between">
