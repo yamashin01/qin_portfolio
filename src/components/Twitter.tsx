@@ -8,10 +8,6 @@ export const Twitter: FC<TwitterType> = (props) => {
   const theme = useMantineTheme();
   const { profile, tweets } = props;
 
-  const handleGoTwitter = () => {
-    window.location.href = "https://twitter.com/yamashin0413";
-  };
-
   return (
     <div className="w-full">
       <div className="py-4">
@@ -47,7 +43,14 @@ export const Twitter: FC<TwitterType> = (props) => {
         })}
       </div>
       <div className="text-center">
-        <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" onClick={handleGoTwitter}>
+        <Button
+          color={theme.colorScheme === 'dark' ? "gray" : "dark"} 
+          radius="xl" 
+          component="a"
+          target="_blank"
+          rel="author external"
+          href="https://twitter.com/yamashin0413"
+        >
           View on Twitter
         </Button>
       </div>
