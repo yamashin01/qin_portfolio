@@ -1,6 +1,5 @@
 import { Button, Text, Title, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
-import Router from "next/router";
 import React from "react";
 import { FaFacebook, FaRss, FaTwitter } from "react-icons/fa";
 import portfolioImg from "public/programing_img.jpg";
@@ -12,6 +11,7 @@ import { client } from "src/libs/client";
 import { format } from "date-fns";
 import { BlogType, IndexProps, PortfolioType } from "src/types/types";
 import { TwitterApi } from "twitter-api-v2";
+import { IconContext } from "react-icons";
 
 export const getStaticProps: GetStaticProps = async () => {
   const blogData = await client.getList<BlogType>({ endpoint: "blog" });
@@ -55,25 +55,25 @@ const Home: NextPage<IndexProps> = (props) => {
         </div>
         <div className="flex lg:mr-40 ml-4 md:ml-20 pt-4 lg:pt-24 lg:justify-between text-xl">
           <div className="mr-2 cursor-pointer">
-            <Link href="https://twitter.com/yamashin0413">
-              <>
+            <IconContext.Provider value={{ color: '#fff'}}>
+              <a href="https://twitter.com/yamashin0413" target="_blank" rel="external author">
                 <FaTwitter />
-              </>
-            </Link>
+              </a>
+            </IconContext.Provider>
           </div>
           <div className="mr-2 cursor-pointer">
-            <Link href="https://www.facebook.com/syamada01">
-              <>
+            <IconContext.Provider value={{ color: '#fff'}}>
+              <a href="https://www.facebook.com/syamada01" target="_blank" rel="external author">
                 <FaFacebook />
-              </>
-            </Link>
+              </a>
+            </IconContext.Provider>
           </div>
           <div className="mr-2 cursor-pointer">
-            <Link href="/">
-              <>
+            <IconContext.Provider value={{ color: '#fff'}}>
+              <a href="/" target="_blank" rel="external author">
                 <FaRss />
-              </>
-            </Link>
+              </a>
+            </IconContext.Provider>
           </div>
         </div>
       </div>
