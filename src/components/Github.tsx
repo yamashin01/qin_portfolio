@@ -44,10 +44,6 @@ const githubArticleList: GitHubType[] = [
 export const Github = () => {
   const theme = useMantineTheme();
 
-  const handleGoGithub = () => {
-    window.location.href = "https://github.com/yamashin01";
-  };
-
   return (
     <div className="w-full">
       <div className="py-4">
@@ -95,7 +91,14 @@ export const Github = () => {
         })}
       </div>
       <div className="text-center">
-        <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" onClick={handleGoGithub}>
+        <Button
+          color={theme.colorScheme === 'dark' ? "gray" : "dark"} 
+          radius="xl" 
+          component="a"
+          target="_blank"
+          rel="author external noreferrer"
+          href="https://github.com/yamashin01"
+        >
           View on Github
         </Button>
       </div>

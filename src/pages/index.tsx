@@ -1,6 +1,5 @@
 import { Button, Text, Title, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
-import Router from "next/router";
 import React from "react";
 import { FaFacebook, FaRss, FaTwitter } from "react-icons/fa";
 import portfolioImg from "public/programing_img.jpg";
@@ -12,6 +11,7 @@ import { client } from "src/libs/client";
 import { format } from "date-fns";
 import { BlogType, IndexProps, PortfolioType } from "src/types/types";
 import { TwitterApi } from "twitter-api-v2";
+import { IconContext } from "react-icons";
 
 export const getStaticProps: GetStaticProps = async () => {
   const blogData = await client.getList<BlogType>({ endpoint: "blog" });
@@ -42,13 +42,6 @@ const Home: NextPage<IndexProps> = (props) => {
   const theme = useMantineTheme();
   const { blogData, portfolioData, twitterData } = props;
 
-  const handleGoBlog = () => {
-    Router.push("/Blog");
-  };
-  const handleGoPortfolio = () => {
-    Router.push("/Portfolio");
-  };
-
   return (
     <div>
       <div className="lg:flex bg-blue-800 text-white h-56 justify-between mb-12 place-content-center">
@@ -62,25 +55,25 @@ const Home: NextPage<IndexProps> = (props) => {
         </div>
         <div className="flex lg:mr-40 ml-4 md:ml-20 pt-4 lg:pt-24 lg:justify-between text-xl">
           <div className="mr-2 cursor-pointer">
-            <Link href="https://twitter.com/yamashin0413">
-              <>
+            <IconContext.Provider value={{ color: '#fff'}}>
+              <a href="https://twitter.com/yamashin0413" target="_blank" rel="external author noreferrer">
                 <FaTwitter />
-              </>
-            </Link>
+              </a>
+            </IconContext.Provider>
           </div>
           <div className="mr-2 cursor-pointer">
-            <Link href="https://www.facebook.com/syamada01">
-              <>
+            <IconContext.Provider value={{ color: '#fff'}}>
+              <a href="https://www.facebook.com/syamada01" target="_blank" rel="external author noreferrer">
                 <FaFacebook />
-              </>
-            </Link>
+              </a>
+            </IconContext.Provider>
           </div>
           <div className="mr-2 cursor-pointer">
-            <Link href="/">
-              <>
+            <IconContext.Provider value={{ color: '#fff'}}>
+              <a href="/" target="_blank" rel="external author noreferrer">
                 <FaRss />
-              </>
-            </Link>
+              </a>
+            </IconContext.Provider>
           </div>
         </div>
       </div>
@@ -94,7 +87,7 @@ const Home: NextPage<IndexProps> = (props) => {
           {blogData.contents.map((content, index) => {
             return index < 5 ? (
               <div key={content.id} className="mb-4">
-                <div className="hover:cursor-pointer text-blue-500 hover:text-blue-800">
+                <div className="cursor-pointer text-blue-500 hover:text-blue-800">
                   <Link href={`Blog/${content.id}`}>
                     <h3 className="mb-0">{content.title}</h3>
                   </Link>
@@ -109,9 +102,9 @@ const Home: NextPage<IndexProps> = (props) => {
             ) : null;
           })}
           <div className="text-center">
-            <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" onClick={handleGoBlog}>
-              View All
-            </Button>
+            <Link href="/Blog" passHref>
+              <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" component="a">View All</Button>
+            </Link>
           </div>
         </div>
 
@@ -124,7 +117,7 @@ const Home: NextPage<IndexProps> = (props) => {
             {portfolioData.contents.map((content, index) => {
               return index < 6 ? (
                 <div key={content.id} className="mb-4">
-                  <div className="hover:cursor-pointer text-center">
+                  <div className="cursor-pointer text-center">
                     <Link href={`/Portfolio/${content.id}`}>
                       <>
                         <Image
@@ -136,7 +129,7 @@ const Home: NextPage<IndexProps> = (props) => {
                       </>
                     </Link>
                   </div>
-                  <div className="hover:cursor-pointer text-blue-500 hover:text-blue-800">
+                  <div className="cursor-pointer text-blue-500 hover:text-blue-800">
                     <Link href={`/Portfolio/${content.id}`}>
                       <h3 className="text-center mb-0">{content.title}</h3>
                     </Link>
@@ -149,9 +142,9 @@ const Home: NextPage<IndexProps> = (props) => {
             })}
           </div>
           <div className="text-center">
-            <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" onClick={handleGoPortfolio}>
-              View All
-            </Button>
+            <Link href="/Portfolio" passHref>
+              <Button color={theme.colorScheme === 'dark' ? "gray" : "dark"} radius="xl" component="a">View All</Button>
+            </Link>
           </div>
         </div>
         <div className="md:flex my-20 justify-between">

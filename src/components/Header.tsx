@@ -14,13 +14,13 @@ export const Header = () => {
       <nav className="py-2.5 sm:mx-20 mx-4">
         <div className="flex flex-wrap justify-between items-center">
           <button
-            className="md:hidden border-none mr-4 hover:cursor-pointer text-lg"
+            className="md:hidden border-none mr-4 cursor-pointer text-lg"
             onClick={() => setIsOpened(true)}
           >
             <FaBars />
           </button>
           <Link href="/" className="flex items-center no-underline place-items-center">
-            <span className="font-bold hover:cursor-pointer place-items-center items-center">
+            <span className="font-bold cursor-pointer place-items-center items-center">
               Yama IT Portfolio
             </span>
           </Link>
@@ -34,7 +34,7 @@ export const Header = () => {
                       className="block px-4 text-gray-700 no-underline rounded bg-primary-700 md:p-0 dark:text-white"
                       aria-current="page"
                     >
-                      <span className="hover:cursor-pointer">{menu.name}</span>
+                      <span className="cursor-pointer">{menu.name}</span>
                     </Link>
                   </li>
                 );
