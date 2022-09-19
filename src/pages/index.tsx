@@ -87,7 +87,7 @@ const Home: NextPage<IndexProps> = (props) => {
           {blogData.contents.map((content, index) => {
             return index < 5 ? (
               <div key={content.id} className="mb-4">
-                <div className="hover:cursor-pointer text-blue-500 hover:text-blue-800">
+                <div className="cursor-pointer text-blue-500 hover:text-blue-800">
                   <Link href={`Blog/${content.id}`}>
                     <h3 className="mb-0">{content.title}</h3>
                   </Link>
@@ -117,7 +117,7 @@ const Home: NextPage<IndexProps> = (props) => {
             {portfolioData.contents.map((content, index) => {
               return index < 6 ? (
                 <div key={content.id} className="mb-4">
-                  <div className="hover:cursor-pointer text-center">
+                  <div className="cursor-pointer text-center">
                     <Link href={`/Portfolio/${content.id}`}>
                       <>
                         <Image
@@ -129,7 +129,7 @@ const Home: NextPage<IndexProps> = (props) => {
                       </>
                     </Link>
                   </div>
-                  <div className="hover:cursor-pointer text-blue-500 hover:text-blue-800">
+                  <div className="cursor-pointer text-blue-500 hover:text-blue-800">
                     <Link href={`/Portfolio/${content.id}`}>
                       <h3 className="text-center mb-0">{content.title}</h3>
                     </Link>

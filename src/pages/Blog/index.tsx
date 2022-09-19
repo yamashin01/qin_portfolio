@@ -26,7 +26,7 @@ const Blog: NextPage<Props> = (props) => {
       {props.contents.map((content) => {
         return (
           <div key={content.id} className="mb-4">
-            <div className="no-underline text-blue-500 hover:text-blue-800 hover:cursor-pointer text-xl">
+            <div className="no-underline text-blue-500 hover:text-blue-800 cursor-pointer text-xl">
               <Link href={`/Blog/${content.id}`} prefetch={false}>
                 <Text>{content.title}</Text>
               </Link>

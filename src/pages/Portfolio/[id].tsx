@@ -19,7 +19,7 @@ const PortfolioId: NextPage<Props> = (props) => {
       <div className="mb-8">
         <div className="mb-8"> 
             {props.url ? 
-            <div className="hover:cursor-pointer hover:text-blue-800 text-blue-500">
+            <div className="cursor-pointer hover:text-blue-800 text-blue-500">
                 <Link href={props.url}>
                     <Title order={2}>{props.title}</Title>
                 </Link>

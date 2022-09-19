@@ -31,7 +31,7 @@ const Portfolio: NextPage<Props> = (props) => {
             <div key={content.id} className="col-span-1">
               {content.image?.url ? 
               <div>
-                <div className="hover:cursor-pointer">
+                <div className="cursor-pointer">
                   <Link href={`/Portfolio/${content.id}`} prefetch={false}>
                     <>
                       <Image
@@ -45,7 +45,7 @@ const Portfolio: NextPage<Props> = (props) => {
                   </Link>
                 </div>
               </div> : 
-              <div className="hover:cursor-pointer">
+              <div className="cursor-pointer">
                 <Link href={`/Portfolio/${content.id}`} prefetch={false}>
                   <>
                     <Image
@@ -59,7 +59,7 @@ const Portfolio: NextPage<Props> = (props) => {
                 </Link>
               </div>
             }
-              <div className="text-center text-blue-500 hover:text-blue-800 hover:cursor-pointer pt-4">
+              <div className="text-center text-blue-500 hover:text-blue-800 cursor-pointer pt-4">
                 <Link href={`/Portfolio/${content.id}`}>
                   <Title order={3}>{content.title}</Title>
                 </Link>
