@@ -48,7 +48,7 @@ export const Twitter: FC<TwitterType> = (props) => {
           radius="xl" 
           component="a"
           target="_blank"
-          rel="author external"
+          rel="author external noreferrer"
           href="https://twitter.com/yamashin0413"
         >
           View on Twitter

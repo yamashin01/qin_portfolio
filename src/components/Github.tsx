@@ -96,7 +96,7 @@ export const Github = () => {
           radius="xl" 
           component="a"
           target="_blank"
-          rel="author external"
+          rel="author external noreferrer"
           href="https://github.com/yamashin01"
         >
           View on Github
