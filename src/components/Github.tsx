@@ -1,48 +1,64 @@
-import { Button, Title, useMantineTheme } from "@mantine/core";
+import { gql, useQuery } from "@apollo/client";
+import { Button, Progress, Title, useMantineTheme } from "@mantine/core";
+import { IconGitFork } from "@tabler/icons";
 import React from "react";
-import { FaRegStar, FaSourcetree } from "react-icons/fa";
+import { FaRegStar } from "react-icons/fa";
+import { GitHubLangType, GitHubRepoType } from "src/types/types";
 
-type GitHubType = {
-  id: number;
-  title: string;
-  article: string;
-};
-
-const githubArticleList: GitHubType[] = [
-  {
-    id: 0,
-    title: "lightsound/next-tailwind",
-    article: "Next.js starter template.",
-  },
-  {
-    id: 1,
-    title: "lightsound/next-tailwind",
-    article: "Next.js starter template.",
-  },
-  {
-    id: 2,
-    title: "lightsound/next-tailwind",
-    article: "Next.js starter template.",
-  },
-  {
-    id: 3,
-    title: "lightsound/next-tailwind",
-    article: "Next.js starter template.",
-  },
-  {
-    id: 4,
-    title: "lightsound/next-tailwind",
-    article: "Next.js starter template.",
-  },
-  {
-    id: 5,
-    title: "lightsound/next-tailwind",
-    article: "Next.js starter template.",
-  },
-];
+const GET_REPO_QUERY = gql`
+  query { 
+    user(login: "yamashin01") {
+      repositories(last: 5, privacy: PUBLIC, orderBy: {field: UPDATED_AT, direction: ASC}) {
+        edges {
+          node {
+            id
+            forkCount
+            stargazerCount
+            name
+            description
+            languages(first: 10) {
+              edges {
+                size
+                node {
+                  id
+                  color
+                  name
+                }
+              }
+              totalSize
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export const Github = () => {
   const theme = useMantineTheme();
+
+  const {data, loading, error } = useQuery(GET_REPO_QUERY);
+
+  if (loading) return <p>Loading ...</p>;
+  if (error) return <p style={{color: 'red'}}>{error.message}</p>;
+
+  const repositoryObjList = data.user.repositories.edges.map((edge: any) => {
+    const repositoryBasicData: GitHubRepoType = edge.node;
+
+    // get percentage of lanugage size
+    const languageDataList: GitHubLangType[] = repositoryBasicData.languages.edges.map((language: GitHubLangType) => {
+      const percentage = language.size / repositoryBasicData.languages.totalSize * 100;
+      return {...language, percentage: percentage};
+    });
+
+    // get langAreaList for set Progress of Mantine
+    const langAreaList = languageDataList.map((language: GitHubLangType) => {
+      const value = language.percentage;
+      const color = language.node.color;
+      return {value: value, color: color};
+    });
+    return {basicData: repositoryBasicData, languageDataList: languageDataList, langAreaList: langAreaList};
+  });
 
   return (
     <div className="w-full">
@@ -51,43 +67,45 @@ export const Github = () => {
       </div>
       <div className="bg-gray-100 h-px rounded-full mb-8" />
       <div>
-        {githubArticleList.map((githubArticle, index) => {
-          return index < 5 ? (
-            <div key={githubArticle.id} className="mb-8">
-              <p className="my-2">{githubArticle.title}</p>
+        {repositoryObjList.map((repositoryObj: any) => {
+          return( 
+            <div key={repositoryObj.basicData.id} className="mb-8">
+              <p className="my-2">{repositoryObj.basicData.name}</p>
               <p className="text-gray-600 my-2 text-sm">
-                {githubArticle.article}
+                {repositoryObj.basicData.description}
               </p>
-              <div>
+              <div className="mb-2 align-middle">
                 <FaRegStar />
-                <span className="ml-2 mr-4 text-xs items-center">117</span>
-                <FaSourcetree />
-                <span className="ml-2 text-xs items-center">18</span>
+                <span className="ml-2 mr-4 text-xs items-center">{repositoryObj.basicData.stargazerCount}</span>
+                <IconGitFork />
+                <span className="ml-2 text-xs items-center">{repositoryObj.basicData.forkCount}</span>
+              </div>
+              <div className="mb-2">
+                <Progress
+                    sections= {repositoryObj.langAreaList}
+                />
               </div>
               <div className="flex my-2">
-                <div className="bg-blue-600 w-2/3 h-2 rounded-l-full"></div>
-                <div className="bg-yellow-300 w-1/4 h-2"></div>
-                <div className="bg-gray-300 w-1/12 h-2 rounded-r-full"></div>
+                {repositoryObj.languageDataList.map((language: GitHubLangType) => {
+                    return (
+                      <div key={language.node.id}>
+                        <div style={{backgroundColor: language.node.color}}></div>
+                      </div>
+                    )
+                  })}
               </div>
               <div className="flex text-xs justify-between">
-                <div>
-                  <span className="text-blue-600">●</span>
-                  <span className="font-bold mx-2">Typescript</span>{" "}
-                  <span className="text-gray-600">65.5%</span>
-                </div>
-                <div>
-                  <span className="text-yellow-300">●</span>
-                  <span className="font-bold mx-2">Javascript</span>{" "}
-                  <span className="text-gray-600">33.7%</span>
-                </div>
-                <div>
-                  <span className="text-gray-300">●</span>
-                  <span className="font-bold mx-2">Other</span>{" "}
-                  <span className="text-gray-600">0.8%</span>
-                </div>
+                {repositoryObj.languageDataList.map((language: GitHubLangType) => {
+                  return (
+                    <div key={language.node.id}>
+                      <span style={{color: language.node.color}}>●</span>
+                      <span className="font-bold mx-2">{language.node.name}</span>{" "}
+                      <span className="text-gray-600">{language.percentage.toPrecision(2)}%</span>
+                    </div>
+                  )
+                })}
               </div>
-            </div>
-          ) : null;
+            </div>);
         })}
       </div>
       <div className="text-center">

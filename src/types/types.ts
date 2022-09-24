@@ -62,3 +62,34 @@ export type IndexProps = {
     portfolioData: MicroCMSListResponse<PortfolioType>;
     twitterData: TwitterType;
 };
+
+// GitHub
+export type GitHubType = {
+    id: number;
+    title: string;
+    article: string;
+};
+
+export type GitHubRepoType = {
+    id: string;
+    forkCount: number;
+    stargazerCount: number;
+    name: string;
+    description: string;
+    url: string;
+    languages: {
+        edges: GitHubLangType[],
+        totalSize: number,
+    };
+}
+
+export type GitHubLangType = {
+    node : {
+        id: string;
+        size: number;
+        color: string;
+        name: string;
+    }
+    size: number;
+    percentage: number;
+}
