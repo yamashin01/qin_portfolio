@@ -64,12 +64,6 @@ export type IndexProps = {
 };
 
 // GitHub
-export type GitHubType = {
-    id: number;
-    title: string;
-    article: string;
-};
-
 export type GitHubRepoType = {
     id: string;
     forkCount: number;
