@@ -91,7 +91,7 @@ export const Github = () => {
                       <div key={language.node.id}>
                         <div style={{backgroundColor: language.node.color}}></div>
                       </div>
-                    )
+                    );
                   })}
               </div>
               <div className="flex text-xs justify-between">
@@ -102,7 +102,7 @@ export const Github = () => {
                       <span className="font-bold mx-2">{language.node.name}</span>{" "}
                       <span className="text-gray-600">{language.percentage.toPrecision(2)}%</span>
                     </div>
-                  )
+                  );
                 })}
               </div>
             </div>);
