@@ -43,7 +43,7 @@ export const Github = () => {
           return( 
             <div key={repositoryObj.basicData.id} className="mb-8">
               <div className="my-2">
-                <a href={`https://github.com/yamashin01/${repositoryObj.basicData.name}`} target="_blank">
+                <a href={`https://github.com/yamashin01/${repositoryObj.basicData.name}`} rel="noreferrer" target="_blank">
                   {repositoryObj.basicData.name}
                 </a>
               </div>
