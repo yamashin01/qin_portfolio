@@ -4,35 +4,7 @@ import { IconGitFork } from "@tabler/icons";
 import React from "react";
 import { FaRegStar } from "react-icons/fa";
 import { GitHubLangType, GitHubRepoType } from "src/types/types";
-
-const GET_REPO_QUERY = gql`
-  query { 
-    user(login: "yamashin01") {
-      repositories(last: 5, privacy: PUBLIC, orderBy: {field: UPDATED_AT, direction: ASC}) {
-        edges {
-          node {
-            id
-            forkCount
-            stargazerCount
-            name
-            description
-            languages(first: 10) {
-              edges {
-                size
-                node {
-                  id
-                  color
-                  name
-                }
-              }
-              totalSize
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+import { GET_REPO_QUERY } from "src/utils/query";
 
 export const Github = () => {
   const theme = useMantineTheme();
@@ -70,7 +42,11 @@ export const Github = () => {
         {repositoryObjList.map((repositoryObj: any) => {
           return( 
             <div key={repositoryObj.basicData.id} className="mb-8">
-              <p className="my-2">{repositoryObj.basicData.name}</p>
+              <div className="my-2">
+                <a href={`https://github.com/yamashin01/${repositoryObj.basicData.name}`} rel="noreferrer" target="_blank">
+                  {repositoryObj.basicData.name}
+                </a>
+              </div>
               <p className="text-gray-600 my-2 text-sm">
                 {repositoryObj.basicData.description}
               </p>
@@ -81,9 +57,7 @@ export const Github = () => {
                 <span className="ml-2 text-xs items-center">{repositoryObj.basicData.forkCount}</span>
               </div>
               <div className="mb-2">
-                <Progress
-                    sections= {repositoryObj.langAreaList}
-                />
+                <Progress sections= {repositoryObj.langAreaList} />
               </div>
               <div className="flex my-2">
                 {repositoryObj.languageDataList.map((language: GitHubLangType) => {
