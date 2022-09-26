@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { FC } from "react";
 import twitterIcon from "public/myImage.jpeg";
 import { TwitterType } from "src/types/types";
+import format from "date-fns/format";
 
 export const Twitter: FC<TwitterType> = (props) => {
   const theme = useMantineTheme();
@@ -28,15 +29,14 @@ export const Twitter: FC<TwitterType> = (props) => {
                 />
               </div>
               <div>
-                <div className="flex">
-                  <div className="mr-2">{profile.name}</div>
-                  <div className="text-xs text-gray-600 align-middle">
-                    {`@${profile.username}`}
-                  </div>
+                <div className="mr-2">{profile.name}</div>
+                <div className="text-xs text-gray-600 align-middle">
+                  {`@${profile.username}`}
                 </div>
                 <p className="text-gray-600 my-2 text-sm whitespace-pre-wrap">
                   {tweet.text}
                 </p>
+                <p className="text-sm text-right text-gray-500">{format(new Date(tweet.created_at), "yyyy.MM.dd")}</p>
               </div>
             </div>
           ) : null;
