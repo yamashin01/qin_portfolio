@@ -1,4 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Button, Progress, Title, useMantineTheme } from "@mantine/core";
 import { IconGitFork } from "@tabler/icons";
 import React from "react";
