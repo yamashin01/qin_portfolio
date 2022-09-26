@@ -29,7 +29,7 @@ export const Twitter: FC<TwitterType> = (props) => {
                 />
               </div>
               <div className="w-5/6">
-                <div className="mr-2">{profile.name}</div>
+                <div className="mr-2 text-sm">{profile.name}</div>
                 <div className="text-xs text-gray-600 align-middle">
                   {`@${profile.username}`}
                 </div>
