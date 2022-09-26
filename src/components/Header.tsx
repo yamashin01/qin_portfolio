@@ -1,7 +1,7 @@
-import { ActionIcon, useMantineColorScheme } from "@mantine/core";
+import { ActionIcon, Burger, useMantineColorScheme } from "@mantine/core";
 import Link from "next/link";
 import React, { useState } from "react";
-import { FaBars, FaRegMoon, FaSun } from "react-icons/fa";
+import { FaRegMoon, FaSun } from "react-icons/fa";
 import { menuList, MenuModal } from "src/components/MenuModal";
 
 export const Header = () => {
@@ -13,12 +13,12 @@ export const Header = () => {
     <header>
       <nav className="py-2.5 sm:mx-20 mx-4">
         <div className="flex flex-wrap justify-between items-center">
-          <button
-            className="md:hidden border-none mr-4 cursor-pointer text-lg"
-            onClick={() => setIsOpened(true)}
-          >
-            <FaBars />
-          </button>
+          <Burger
+            opened={isOpened}
+            onClick={() => setIsOpened((opened) => !opened)}
+            color={dark ? "#fff" : "#000"}
+            className="md:hidden"
+          />
           <Link href="/" className="flex items-center no-underline place-items-center">
             <span className="font-bold cursor-pointer place-items-center items-center">
               Yama IT Portfolio
