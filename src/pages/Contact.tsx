@@ -27,12 +27,12 @@ const Contact = () => {
           "Content-Type": "application/json",
           "X-MICROCMS-API-KEY": process.env.NEXT_PUBLIC_MICROCMS_API_KEY,
         }          
-      })
+      });
       form.reset();
     } catch {
       alert('API Error POST');
     }
-  }
+  };
 
   return (
     <div>
