@@ -19,7 +19,7 @@ export const Twitter: FC<TwitterType> = (props) => {
         {tweets.map((tweet, index) => {
           return index < 3 ? (
             <div key={tweet.id} className="mb-8 flex">
-              <div className="m-2">
+              <div className="m-2 w-1/6">
                 <Image
                   src={twitterIcon}
                   alt="twitter-icon"
@@ -28,7 +28,7 @@ export const Twitter: FC<TwitterType> = (props) => {
                   className="items-center rounded-full"
                 />
               </div>
-              <div>
+              <div className="w-5/6">
                 <div className="mr-2">{profile.name}</div>
                 <div className="text-xs text-gray-600 align-middle">
                   {`@${profile.username}`}
