@@ -1,7 +1,9 @@
 import { Button, Text, Title, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
-import { FaFacebook, FaRss, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaTwitter } from "react-icons/fa";
+import topImg from "public/top1.jpg";
+import topImg2 from "public/top2.jpg";
 import portfolioImg from "public/programing_img.jpg";
 import { Github } from "src/components/Github";
 import { Twitter } from "src/components/Twitter";
@@ -44,36 +46,50 @@ const Home: NextPage<IndexProps> = (props) => {
 
   return (
     <div>
-      <div className="lg:flex bg-blue-800 text-white h-56 justify-between mb-12 place-content-center">
-        <div className="ml-4 md:ml-20">
-          <div className="text-xl md:text-3xl font-extrabold pt-12 lg:pt-20 align-middle">
-            Yama IT Portfolio
-          </div>
-          <div className="align-middle">
-            ヤマのITポートフォリオのページです。
-          </div>
+      <div className="relative">
+        <div className="w-full">
+          {theme.colorScheme === 'dark' ? 
+            <Image 
+            src={topImg}
+            alt="topImg"
+            /> :
+            <Image 
+            src={topImg2}
+            alt="topImg2"
+            />  
+          }
         </div>
-        <div className="flex lg:mr-40 ml-4 md:ml-20 pt-4 lg:pt-24 lg:justify-between text-xl">
-          <div className="mr-2 cursor-pointer">
-            <IconContext.Provider value={{ color: '#fff'}}>
-              <a href="https://twitter.com/yamashin0413" target="_blank" rel="external author noreferrer">
-                <FaTwitter />
-              </a>
-            </IconContext.Provider>
+        <div className="lg:flex text-gray-800 h-56 justify-between mb-12 place-content-center absolute top-0 left-0 w-full">
+          <div className="ml-4 md:ml-20" style={theme.colorScheme === 'dark' ? {color: '#606060'} : {color: 'white'}}>
+            <div className="text-xl md:text-3xl font-extrabold pt-4 md:pt-12 lg:pt-20 align-middle">
+              Yama IT Portfolio
+            </div>
+            <div className="align-middle">
+              ヤマのITポートフォリオのページです。
+            </div>
           </div>
-          <div className="mr-2 cursor-pointer">
-            <IconContext.Provider value={{ color: '#fff'}}>
-              <a href="https://www.facebook.com/syamada01" target="_blank" rel="external author noreferrer">
-                <FaFacebook />
-              </a>
-            </IconContext.Provider>
-          </div>
-          <div className="mr-2 cursor-pointer">
-            <IconContext.Provider value={{ color: '#fff'}}>
-              <a href="/" target="_blank" rel="external author noreferrer">
-                <FaRss />
-              </a>
-            </IconContext.Provider>
+          <div className="flex lg:mr-40 ml-4 md:ml-20 md:pt-4 lg:pt-24 lg:justify-between md:text-xl">
+            <div className="mr-2 cursor-pointer">
+              <IconContext.Provider value={theme.colorScheme === 'dark' ? {color: '#606060'} : {color: 'white'}}>
+                <a href="https://twitter.com/yamashin0413" target="_blank" rel="external author noreferrer">
+                  <FaTwitter />
+                </a>
+              </IconContext.Provider>
+            </div>
+            <div className="mr-2 cursor-pointer">
+              <IconContext.Provider value={theme.colorScheme === 'dark' ? {color: '#606060'} : {color: 'white'}}>
+                <a href="https://www.facebook.com/syamada01" target="_blank" rel="external author noreferrer">
+                  <FaFacebook />
+                </a>
+              </IconContext.Provider>
+            </div>
+            <div className="mr-2 cursor-pointer">
+              <IconContext.Provider value={theme.colorScheme === 'dark' ? {color: '#606060'} : {color: 'white'}}>
+                <a href="https://github.com/yamashin01" target="_blank" rel="external author noreferrer">
+                  <FaGithub />
+                </a>
+              </IconContext.Provider>
+            </div>
           </div>
         </div>
       </div>
@@ -120,12 +136,20 @@ const Home: NextPage<IndexProps> = (props) => {
                   <div className="cursor-pointer text-center">
                     <Link href={`/Portfolio/${content.id}`}>
                       <>
+                        {content.image?.url ? 
+                        <Image
+                        src={content.image?.url}
+                        alt="portfolioImg"
+                        width={360}
+                        height={240}
+                        /> :
                         <Image
                           src={portfolioImg}
                           alt="portfolioImg"
                           width={360}
                           height={240}
                         />
+                        }
                       </>
                     </Link>
                   </div>

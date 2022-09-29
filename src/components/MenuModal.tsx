@@ -10,21 +10,26 @@ type MenuType = {
 export const menuList: MenuType[] = [
   {
     id: 0,
+    name: "Top",
+    link: "/",
+  },
+  {
+    id: 1,
     name: "About",
     link: "/About",
   },
   {
-    id: 1,
+    id: 2,
     name: "Blog",
     link: "/Blog",
   },
   {
-    id: 2,
+    id: 3,
     name: "Portfolio",
     link: "/Portfolio",
   },
   {
-    id: 3,
+    id: 4,
     name: "Contact",
     link: "/Contact",
   },

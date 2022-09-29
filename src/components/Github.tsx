@@ -43,7 +43,7 @@ export const Github = () => {
           return( 
             <div key={repositoryObj.basicData.id} className="mb-8">
               <div className="my-2">
-                <a href={`https://github.com/yamashin01/${repositoryObj.basicData.name}`} rel="noreferrer" target="_blank">
+                <a href={`https://github.com/yamashin01/${repositoryObj.basicData.name}`} rel="noreferrer" target="_blank"  className="text-blue-800 no-underline">
                   {repositoryObj.basicData.name}
                 </a>
               </div>
@@ -59,22 +59,13 @@ export const Github = () => {
               <div className="mb-2">
                 <Progress sections= {repositoryObj.langAreaList} />
               </div>
-              <div className="flex my-2">
-                {repositoryObj.languageDataList.map((language: GitHubLangType) => {
-                    return (
-                      <div key={language.node.id}>
-                        <div style={{backgroundColor: language.node.color}}></div>
-                      </div>
-                    );
-                  })}
-              </div>
-              <div className="flex text-xs justify-between">
+              <div className="flex text-xs">
                 {repositoryObj.languageDataList.map((language: GitHubLangType) => {
                   return (
                     <div key={language.node.id}>
                       <span style={{color: language.node.color}}>●</span>
                       <span className="font-bold mx-2">{language.node.name}</span>{" "}
-                      <span className="text-gray-600">{language.percentage.toPrecision(2)}%</span>
+                      <span className="text-gray-600 mr-4">{language.percentage.toPrecision(2)}%</span>
                     </div>
                   );
                 })}
@@ -91,7 +82,7 @@ export const Github = () => {
           rel="author external noreferrer"
           href="https://github.com/yamashin01"
         >
-          View on Github
+          View on GitHub
         </Button>
       </div>
     </div>
