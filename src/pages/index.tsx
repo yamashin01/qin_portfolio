@@ -61,14 +61,14 @@ const Home: NextPage<IndexProps> = (props) => {
         </div>
         <div className="lg:flex text-gray-800 h-56 justify-between mb-12 place-content-center absolute top-0 left-0 w-full">
           <div className="ml-4 md:ml-20" style={theme.colorScheme === 'dark' ? {color: '#606060'} : {color: 'white'}}>
-            <div className="text-xl md:text-3xl font-extrabold pt-4 md:pt-12 lg:pt-20 align-middle">
+            <div className="text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold pt-4 md:pt-12 lg:pt-20 xl:pt-36 align-middle">
               Yama IT Portfolio
             </div>
-            <div className="align-middle">
+            <div className="align-middle text-sm xl:text-xl">
               ヤマのITポートフォリオのページです。
             </div>
           </div>
-          <div className="flex lg:mr-40 ml-4 md:ml-20 md:pt-4 lg:pt-24 lg:justify-between md:text-xl">
+          <div className="flex lg:mr-40 ml-4 md:ml-20 md:pt-4 lg:pt-24 xl:pt-36 lg:justify-between md:text-xl xl:text-2xl">
             <div className="mr-2 cursor-pointer">
               <IconContext.Provider value={theme.colorScheme === 'dark' ? {color: '#606060'} : {color: 'white'}}>
                 <a href="https://twitter.com/yamashin0413" target="_blank" rel="external author noreferrer">
