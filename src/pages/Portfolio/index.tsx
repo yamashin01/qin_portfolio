@@ -15,6 +15,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const data = await client.getList<PortfolioType>({ endpoint: "portfolio" });
   return {
     props: data,
+    revalidate: 10,
   };
 };
 

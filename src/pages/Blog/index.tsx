@@ -13,6 +13,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const data = await client.getList<BlogType>({ endpoint: "blog" });
   return {
     props: data,
+    revalidate: 10,
   };
 };
 

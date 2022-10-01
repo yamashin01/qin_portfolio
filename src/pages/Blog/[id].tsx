@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps<Props, { id: string }> = async (
   ctx
 ) => {
   if (!ctx.params) {
-    return { notFound: true };
+    return { notFound: true, revalidate: 10 };
   }
   const data = await client.getListDetail<BlogType>({
     endpoint: "blog",
