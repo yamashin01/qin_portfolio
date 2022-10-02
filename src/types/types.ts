@@ -8,7 +8,12 @@ export type BlogType = {
     revisedAt: string;
     title: string;
     body: string;
-  };
+    image?: {
+        url: string;
+        height: number;
+        width: number;
+    }  
+};
   
 export type PortfolioType = {
     id: string;
