@@ -136,7 +136,7 @@ const Home: NextPage<IndexProps> = (props) => {
                 <div key={content.id} className="mb-4">
                   <div className="cursor-pointer text-center">
                     <Link href={`/Portfolio/${content.id}`}>
-                      <>
+                      <a>
                         {content.image?.url ? 
                         <Image
                         src={content.image?.url}
@@ -152,7 +152,7 @@ const Home: NextPage<IndexProps> = (props) => {
                           height={240}
                         />
                         }
-                      </>
+                      </a>
                     </Link>
                   </div>
                   <div className="cursor-pointer text-blue-500 hover:text-blue-800">
