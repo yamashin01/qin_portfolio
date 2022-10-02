@@ -160,9 +160,6 @@ const Home: NextPage<IndexProps> = (props) => {
                       <h3 className="text-center mb-0">{content.title}</h3>
                     </Link>
                   </div>
-                  <div className="my-4">
-                    <Text lineClamp={2}><div dangerouslySetInnerHTML={{ __html: content.body }} /></Text>
-                  </div>
                 </div>
               ) : null;
             })}
