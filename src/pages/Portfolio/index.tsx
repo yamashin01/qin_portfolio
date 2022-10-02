@@ -33,22 +33,23 @@ const Portfolio: NextPage<Props> = (props) => {
               {content.image?.url ? 
               <div>
                 <div className="cursor-pointer">
-                  <Link href={`/Portfolio/${content.id}`} prefetch={false}>
-                    <>
+                  <Link href={`/Portfolio/${content.id}`}>
+                    <a>
                       <Image
                         src={content.image.url}
                         alt="portfolioImg"
                         width={360}
                         height={240}
                         layout="responsive"
+                        objectFit="contain"
                       />
-                    </>
+                    </a>
                   </Link>
                 </div>
               </div> : 
               <div className="cursor-pointer">
-                <Link href={`/Portfolio/${content.id}`} prefetch={false}>
-                  <>
+                <Link href={`/Portfolio/${content.id}`}>
+                  <a>
                     <Image
                       src={alt_image}
                       alt="alt_image"
@@ -56,7 +57,7 @@ const Portfolio: NextPage<Props> = (props) => {
                       height={240}
                       layout="responsive"
                     />
-                  </>
+                  </a>
                 </Link>
               </div>
             }

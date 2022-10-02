@@ -36,7 +36,8 @@ export const getStaticProps: GetStaticProps = async () => {
       blogData,
       portfolioData,
       twitterData: { profile: data, tweets }
-    }
+    },
+    revalidate: 10,
   };
 };
 
@@ -135,13 +136,14 @@ const Home: NextPage<IndexProps> = (props) => {
                 <div key={content.id} className="mb-4">
                   <div className="cursor-pointer text-center">
                     <Link href={`/Portfolio/${content.id}`}>
-                      <>
+                      <a>
                         {content.image?.url ? 
                         <Image
                         src={content.image?.url}
                         alt="portfolioImg"
                         width={360}
                         height={240}
+                        objectFit="contain"
                         /> :
                         <Image
                           src={portfolioImg}
@@ -150,7 +152,7 @@ const Home: NextPage<IndexProps> = (props) => {
                           height={240}
                         />
                         }
-                      </>
+                      </a>
                     </Link>
                   </div>
                   <div className="cursor-pointer text-blue-500 hover:text-blue-800">
