@@ -35,6 +35,7 @@ const PortfolioId: NextPage<Props> = (props) => {
                 alt="portfolio Image"
                 width={360}
                 height={240}
+                objectFit="contain" 
                 />
         </div> : null
         }

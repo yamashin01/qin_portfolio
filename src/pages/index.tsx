@@ -143,6 +143,7 @@ const Home: NextPage<IndexProps> = (props) => {
                         alt="portfolioImg"
                         width={360}
                         height={240}
+                        objectFit="contain"
                         /> :
                         <Image
                           src={portfolioImg}
