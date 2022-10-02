@@ -6,6 +6,7 @@ import { BlogType } from "src/types/types";
 import React from "react";
 import { Button } from "@mantine/core";
 import Router from "next/router";
+import Image from "next/image";
 
 type Props = BlogType & MicroCMSContentId & MicroCMSDate;
 
@@ -17,10 +18,23 @@ const BlogId: NextPage<Props> = (props) => {
     <div>
       <h1>{props.title}</h1>
       <div className="bg-gray-100 h-px rounded-full mb-8" />
-      <time>{format(new Date(props.publishedAt), "yyyy.MM.dd")}</time>
+      <div className="text-center">
+        {props.image?.url ? 
+          <Image
+          src={props.image.url}
+          alt="portfolio Image"
+          width={360}
+          height={240}
+          objectFit="contain" 
+          /> : null
+        }
+      </div>
       <div dangerouslySetInnerHTML={{ __html: props.body }} />
-      <div>
-          <Button onClick={handleBack}>戻る</Button>
+      <div className="text-gray-500 text-right">
+        <time>{format(new Date(props.publishedAt), "yyyy.MM.dd")}</time>
+      </div>
+      <div className="mt-8">
+        <Button onClick={handleBack}>戻る</Button>
       </div>
     </div>
   );
