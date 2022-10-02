@@ -36,7 +36,8 @@ export const getStaticProps: GetStaticProps = async () => {
       blogData,
       portfolioData,
       twitterData: { profile: data, tweets }
-    }
+    },
+    revalidate: 10,
   };
 };
 
