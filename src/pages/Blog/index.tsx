@@ -28,7 +28,7 @@ const Blog: NextPage<Props> = (props) => {
       <div className="grid md:grid-cols-3 gap-4">
         {props.contents.map((content) => {
           return (
-            <Link href={`/Blog/${content.id}`}>
+            <Link key={content.id} href={`/Blog/${content.id}`}>
               <Card shadow="sm" p="lg" radius="md" withBorder className="cursor-pointer">
               <Card.Section>
                 {content.image?.url ? 
