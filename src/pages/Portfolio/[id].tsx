@@ -11,9 +11,9 @@ import React from "react";
 type Props = PortfolioType & MicroCMSContentId & MicroCMSDate;
 
 const PortfolioId: NextPage<Props> = (props) => {
-    const handleBack = () => {
-        Router.back();
-    };
+  const handleBack = () => {
+      Router.back();
+  };
   return (
     <div className="container w-auto">
       <div className="mb-8">
