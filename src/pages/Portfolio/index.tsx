@@ -1,10 +1,9 @@
-import { Text, Title } from "@mantine/core";
+import { Title } from "@mantine/core";
 import { MicroCMSListResponse } from "microcms-js-sdk";
 import { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { client } from "src/libs/client";
-import { format } from "date-fns";
 import alt_image from "public/programing_img.jpg";
 import { PortfolioType } from "src/types/types";
 import React from "react";
@@ -29,7 +28,7 @@ const Portfolio: NextPage<Props> = (props) => {
       <div className="grid md:grid-cols-3 gap-4">
         {props.contents.map((content) => {
           return (
-            <div key={content.id} className="col-span-1">
+            <div key={content.id} className="col-span-1 mb-8">
               {content.image?.url ? 
               <div>
                 <div className="cursor-pointer">
@@ -65,14 +64,6 @@ const Portfolio: NextPage<Props> = (props) => {
                 <Link href={`/Portfolio/${content.id}`}>
                   <Title order={3}>{content.title}</Title>
                 </Link>
-              </div>
-              <div>
-                <Text lineClamp={2}>
-                  <div dangerouslySetInnerHTML={{ __html: content.body}} />
-                </Text>
-              </div>
-              <div className="text-right">
-                <small>{format(new Date(content.publishedAt), "yyyy.MM.dd")}</small>
               </div>
             </div>
           );
