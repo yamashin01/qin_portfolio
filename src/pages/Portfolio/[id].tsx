@@ -2,7 +2,6 @@ import { Button, Title } from "@mantine/core";
 import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Router from "next/router";
 import { client } from "src/libs/client";
 import { PortfolioType } from "src/types/types";
@@ -17,31 +16,33 @@ const PortfolioId: NextPage<Props> = (props) => {
   return (
     <div className="container w-auto">
       <div className="mb-8">
-        <div className="mb-8"> 
-            {props.url ? 
-            <div className="cursor-pointer hover:text-blue-800 text-blue-500">
-                <Link href={props.url}>
-                    <Title order={2}>{props.title}</Title>
-                </Link>
-            </div>
-            : <Title order={2}>{props.title}</Title>
-            }
-        </div>
+        <h1>{props.title}</h1>
         <div className="bg-gray-100 h-px rounded-full mb-8" />
-        {props.image?.url ?
-        <div className="items-center text-center">
-            <Image
-                src={props.image.url}
-                alt="portfolio Image"
-                width={360}
-                height={240}
-                objectFit="contain" 
-                />
-        </div> : null
-        }
-        <div dangerouslySetInnerHTML={{ __html: props.body }} />
+        <div className="md:flex justify-between flex-row-reverse">
+          {props.image?.url ?
+            <div className="items-center text-center relative md:w-1/3">
+                <Image
+                    src={props.image.url}
+                    alt="portfolio Image"
+                    width={360}
+                    height={240}
+                    layout="responsive"
+                    objectFit="contain" 
+                    />
+            </div> : null
+          }
+          <div className="md:w-2/3">
+            <div dangerouslySetInnerHTML={{ __html: props.body }} />
+            {props.url ? 
+              <div className="mt-4">
+                  {props.title}アプリへは<a href={props.url} target="_blank" rel="author external noreferrer">こちら</a>
+              </div>
+              : null
+            }
+          </div>
+        </div>
       </div>
-      <div>
+      <div className="mt-8">
           <Button onClick={handleBack}>戻る</Button>
       </div>
     </div>
