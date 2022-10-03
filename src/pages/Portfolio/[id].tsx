@@ -35,7 +35,13 @@ const PortfolioId: NextPage<Props> = (props) => {
             <div dangerouslySetInnerHTML={{ __html: props.body }} />
             {props.url ? 
               <div className="mt-4">
-                  {props.title}アプリへは<a href={props.url} target="_blank" rel="author external noreferrer">こちら</a>
+                  {props.title}へは<a href={props.url} target="_blank" rel="author external noreferrer">こちら</a>
+              </div>
+              : null
+            }
+            {props.repository ? 
+              <div className="mt-4">
+                  {props.title}のリポジトリは<a href={props.repository} target="_blank" rel="author external noreferrer">こちら</a>
               </div>
               : null
             }
