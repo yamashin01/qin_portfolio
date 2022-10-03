@@ -1,7 +1,7 @@
 import { Button, Text, Title, useMantineTheme } from "@mantine/core";
 import Image from "next/image";
 import React, { FC } from "react";
-import twitterIcon from "public/myImage.jpeg";
+import twitterIcon from "public/my_diving_image.jpg";
 import { TwitterType } from "src/types/types";
 import format from "date-fns/format";
 
