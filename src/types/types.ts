@@ -27,6 +27,7 @@ export type PortfolioType = {
         url: string;
     };
     url?: string;
+    repository?: string;
 };
 
 export type AboutType = {
