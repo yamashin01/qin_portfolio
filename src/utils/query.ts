@@ -11,7 +11,7 @@ export const GET_REPO_QUERY = gql`
             stargazerCount
             name
             description
-            languages(first: 10) {
+            languages(first: 10, orderBy: { field: SIZE, direction: DESC }) {
               edges {
                 size
                 node {

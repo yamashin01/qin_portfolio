@@ -70,6 +70,16 @@ export type IndexProps = {
 };
 
 // GitHub
+export type GitHubType = {
+    user: {
+        repositories : {
+            edges : {
+                node : GitHubRepoType; 
+            }[];
+        }
+    }
+}
+
 export type GitHubRepoType = {
     id: string;
     forkCount: number;
