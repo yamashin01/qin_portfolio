@@ -26,10 +26,9 @@ const Portfolio: NextPage<Props> = (props) => {
       </div>
       <div className="bg-gray-100 h-px rounded-full mb-8" />
       <div className="grid md:grid-cols-3 gap-4">
-        {props.contents.map((content) => {
-          return (
-            <div key={content.id} className="col-span-1 mb-8">
-              {content.image?.url ? 
+        {props.contents.map((content) => (
+          <div key={content.id} className="col-span-1 mb-8">
+            {content.image?.url ? 
               <div>
                 <div className="cursor-pointer">
                   <Link href={`/Portfolio/${content.id}`}>
@@ -60,14 +59,13 @@ const Portfolio: NextPage<Props> = (props) => {
                 </Link>
               </div>
             }
-              <div className="text-center text-blue-500 hover:text-blue-800 cursor-pointer pt-4">
-                <Link href={`/Portfolio/${content.id}`}>
-                  <Title order={3}>{content.title}</Title>
-                </Link>
-              </div>
+            <div className="text-center text-blue-500 hover:text-blue-800 cursor-pointer pt-4">
+              <Link href={`/Portfolio/${content.id}`}>
+                <Title order={3}>{content.title}</Title>
+              </Link>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </>
   );

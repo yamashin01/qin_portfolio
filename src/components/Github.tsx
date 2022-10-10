@@ -40,39 +40,36 @@ export const Github = () => {
       </div>
       <div className="bg-gray-100 h-px rounded-full mb-8" />
       <div>
-        {repositoryObjList.map((repositoryObj: any) => {
-          return( 
-            <div key={repositoryObj.basicData.id} className="mb-8">
-              <div className="my-2">
-                <a href={`https://github.com/yamashin01/${repositoryObj.basicData.name}`} rel="noreferrer" target="_blank"  className="text-blue-800 no-underline">
-                  {repositoryObj.basicData.name}
-                </a>
-              </div>
-              <p className="text-gray-600 my-2 text-sm">
-                {repositoryObj.basicData.description}
-              </p>
-              <div className="mb-2 align-middle flex items-center">
-                <FaRegStar />
-                <span className="ml-2 mr-4 text-sm items-center">{repositoryObj.basicData.stargazerCount}</span>
-                <IconGitFork />
-                <span className="ml-2 text-sm items-center">{repositoryObj.basicData.forkCount}</span>
-              </div>
-              <div className="mb-2">
-                <Progress sections= {repositoryObj.langAreaList} />
-              </div>
-              <div className="flex text-xs">
-                {repositoryObj.languageDataList.map((language: GitHubLangType) => {
-                  return (
-                    <div key={language.node.id}>
-                      <span style={{color: language.node.color}}>●</span>
-                      <span className="font-bold mx-2">{language.node.name}</span>{" "}
-                      <span className="text-gray-600 mr-4">{language.percentage}%</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>);
-        })}
+        {repositoryObjList.map((repositoryObj: any) => ( 
+          <div key={repositoryObj.basicData.id} className="mb-8">
+            <div className="my-2">
+              <a href={`https://github.com/yamashin01/${repositoryObj.basicData.name}`} rel="noreferrer" target="_blank"  className="text-blue-800 no-underline">
+                {repositoryObj.basicData.name}
+              </a>
+            </div>
+            <p className="text-gray-600 my-2 text-sm">
+              {repositoryObj.basicData.description}
+            </p>
+            <div className="mb-2 align-middle flex items-center">
+              <FaRegStar />
+              <span className="ml-2 mr-4 text-sm items-center">{repositoryObj.basicData.stargazerCount}</span>
+              <IconGitFork />
+              <span className="ml-2 text-sm items-center">{repositoryObj.basicData.forkCount}</span>
+            </div>
+            <div className="mb-2">
+              <Progress sections={repositoryObj.langAreaList} />
+            </div>
+            <div className="flex text-xs">
+              {repositoryObj.languageDataList.map((language: GitHubLangType) => (
+                <div key={language.node.id}>
+                  <span style={{color: language.node.color}}>●</span>
+                  <span className="font-bold mx-2">{language.node.name}</span>{" "}
+                  <span className="text-gray-600 mr-4">{language.percentage}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
       <div className="text-center">
         <Button

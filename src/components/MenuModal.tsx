@@ -60,15 +60,13 @@ export const MenuModal = (props: Props) => {
         onClose={closeModal}
       >
         <section>
-          {menuList.map((menu) => {
-            return (
-              <div key={menu.id} className="my-4">
-                <div className="text-xl" onClick={() => handleGoPage(menu.link)}>
-                  {menu.name}
-                </div>
+          {menuList.map((menu) => (
+            <div key={menu.id} className="my-4">
+              <div className="text-xl" onClick={() => handleGoPage(menu.link)}>
+                {menu.name}
               </div>
-            );
-          })}
+            </div>
+          ))}
         </section>
       </Modal>
     </>
