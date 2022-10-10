@@ -14,7 +14,7 @@ export type BlogType = {
         width: number;
     }  
 };
-  
+
 export type PortfolioType = {
     id: string;
     createdAt: string;
@@ -25,6 +25,8 @@ export type PortfolioType = {
     body: string;
     image?: {
         url: string;
+        height: number;
+        width: number;
     };
     url?: string;
     repository?: string;
