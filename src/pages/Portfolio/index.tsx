@@ -40,7 +40,7 @@ const Portfolio: NextPage<Props> = (props) => {
                       <div dangerouslySetInnerHTML={{ __html: content.body}} />
                   </Text>
 
-                  <Card.Section mt="sm">
+                  <Card.Section mt="sm" className="text-center">
                     {content.image?.url ? 
                       <Image
                         src={content.image.url}
