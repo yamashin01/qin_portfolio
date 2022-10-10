@@ -43,7 +43,7 @@ export const Github = () => {
         {repositoryObjList.map((repositoryObj: any) => ( 
           <div key={repositoryObj.basicData.id} className="mb-8">
             <div className="my-2">
-              <a href={`https://github.com/yamashin01/${repositoryObj.basicData.name}`} rel="noreferrer" target="_blank"  className="text-blue-800 no-underline">
+              <a href={`https://github.com/yamashin01/${repositoryObj.basicData.name}`} rel="noreferrer" target="_blank" className="text-blue-800 no-underline">
                 {repositoryObj.basicData.name}
               </a>
             </div>
