@@ -1,4 +1,4 @@
-import { Title } from "@mantine/core";
+import { Card, Group, Text, Title } from "@mantine/core";
 import { MicroCMSListResponse } from "microcms-js-sdk";
 import { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
@@ -28,42 +28,39 @@ const Portfolio: NextPage<Props> = (props) => {
       <div className="grid md:grid-cols-3 gap-4">
         {props.contents.map((content) => (
           <div key={content.id} className="col-span-1 mb-8">
-            {content.image?.url ? 
-              <div>
-                <div className="cursor-pointer">
-                  <Link href={`/Portfolio/${content.id}`}>
-                    <a>
+            <Link href={`/Portfolio/${content.id}`}>
+              <a className="no-underline">
+                <Card withBorder shadow="sm" radius="md">
+                  <Card.Section withBorder inheritPadding py="xs">
+                    <Group position="apart">
+                      <Text weight={500}>{content.title}</Text>
+                    </Group>
+                  </Card.Section>
+                  <Text size="sm" color="dimmed" lineClamp={2}>
+                      <div dangerouslySetInnerHTML={{ __html: content.body}} />
+                  </Text>
+
+                  <Card.Section mt="sm">
+                    {content.image?.url ? 
                       <Image
                         src={content.image.url}
-                        alt="portfolioImg"
                         width={360}
                         height={240}
-                        layout="responsive"
                         objectFit="contain"
+                        alt="blog_image"
+                        /> : 
+                        <Image
+                        src={alt_image.src}
+                        width={360}
+                        height={240}
+                        objectFit="contain"
+                        alt="alt_image"
                       />
-                    </a>
-                  </Link>
-                </div>
-              </div> : 
-              <div className="cursor-pointer">
-                <Link href={`/Portfolio/${content.id}`}>
-                  <a>
-                    <Image
-                      src={alt_image}
-                      alt="alt_image"
-                      width={360}
-                      height={240}
-                      layout="responsive"
-                    />
-                  </a>
-                </Link>
-              </div>
-            }
-            <div className="text-center text-blue-500 hover:text-blue-800 cursor-pointer pt-4">
-              <Link href={`/Portfolio/${content.id}`}>
-                <Title order={3}>{content.title}</Title>
-              </Link>
-            </div>
+                    }
+                  </Card.Section>
+                </Card>
+              </a>
+            </Link>
           </div>
         ))}
       </div>
