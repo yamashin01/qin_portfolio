@@ -3,23 +3,24 @@ import { Button, Progress, Title, useMantineTheme } from "@mantine/core";
 import { IconGitFork } from "@tabler/icons";
 import React from "react";
 import { FaRegStar } from "react-icons/fa";
-import { GitHubLangType, GitHubRepoType } from "src/types/types";
+import { GitHubLangType, GitHubType } from "src/types/types";
 import { GET_REPO_QUERY } from "src/utils/query";
 
 export const Github = () => {
   const theme = useMantineTheme();
 
-  const {data, loading, error } = useQuery(GET_REPO_QUERY);
+  const { data, loading, error } = useQuery<GitHubType>(GET_REPO_QUERY);
 
   if (loading) return <p>Loading ...</p>;
   if (error) return <p style={{color: 'red'}}>{error.message}</p>;
+  if (!data) return <p>GitHub repository was not found.</p>;
 
   const repositoryObjList = data.user.repositories.edges.map((edge: any) => {
-    const repositoryBasicData: GitHubRepoType = edge.node;
+    const repositoryBasicData = edge.node;
 
     // get percentage of lanugage size
     const languageDataList: GitHubLangType[] = repositoryBasicData.languages.edges.map((language: GitHubLangType) => {
-      const percentage = language.size / repositoryBasicData.languages.totalSize * 100;
+      const percentage = Math.round((language.size / repositoryBasicData.languages.totalSize )* 1000)/10;
       return {...language, percentage: percentage};
     });
 
@@ -29,7 +30,7 @@ export const Github = () => {
       const color = language.node.color;
       return {value: value, color: color};
     });
-    return {basicData: repositoryBasicData, languageDataList: languageDataList, langAreaList: langAreaList};
+    return {basicData: repositoryBasicData, languageDataList, langAreaList};
   });
 
   return (
@@ -39,39 +40,36 @@ export const Github = () => {
       </div>
       <div className="bg-gray-100 h-px rounded-full mb-8" />
       <div>
-        {repositoryObjList.map((repositoryObj: any) => {
-          return( 
-            <div key={repositoryObj.basicData.id} className="mb-8">
-              <div className="my-2">
-                <a href={`https://github.com/yamashin01/${repositoryObj.basicData.name}`} rel="noreferrer" target="_blank"  className="text-blue-800 no-underline">
-                  {repositoryObj.basicData.name}
-                </a>
-              </div>
-              <p className="text-gray-600 my-2 text-sm">
-                {repositoryObj.basicData.description}
-              </p>
-              <div className="mb-2 align-middle">
-                <FaRegStar />
-                <span className="ml-2 mr-4 text-xs items-center">{repositoryObj.basicData.stargazerCount}</span>
-                <IconGitFork />
-                <span className="ml-2 text-xs items-center">{repositoryObj.basicData.forkCount}</span>
-              </div>
-              <div className="mb-2">
-                <Progress sections= {repositoryObj.langAreaList} />
-              </div>
-              <div className="flex text-xs">
-                {repositoryObj.languageDataList.map((language: GitHubLangType) => {
-                  return (
-                    <div key={language.node.id}>
-                      <span style={{color: language.node.color}}>●</span>
-                      <span className="font-bold mx-2">{language.node.name}</span>{" "}
-                      <span className="text-gray-600 mr-4">{language.percentage.toPrecision(2)}%</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>);
-        })}
+        {repositoryObjList.map((repositoryObj: any) => ( 
+          <div key={repositoryObj.basicData.id} className="mb-8">
+            <div className="my-2">
+              <a href={`https://github.com/yamashin01/${repositoryObj.basicData.name}`} rel="noreferrer" target="_blank"  className="text-blue-800 no-underline">
+                {repositoryObj.basicData.name}
+              </a>
+            </div>
+            <p className="text-gray-600 my-2 text-sm">
+              {repositoryObj.basicData.description}
+            </p>
+            <div className="mb-2 align-middle flex items-center">
+              <FaRegStar />
+              <span className="ml-2 mr-4 text-sm items-center">{repositoryObj.basicData.stargazerCount}</span>
+              <IconGitFork />
+              <span className="ml-2 text-sm items-center">{repositoryObj.basicData.forkCount}</span>
+            </div>
+            <div className="mb-2">
+              <Progress sections={repositoryObj.langAreaList} />
+            </div>
+            <div className="flex text-xs">
+              {repositoryObj.languageDataList.map((language: GitHubLangType) => (
+                <div key={language.node.id}>
+                  <span style={{color: language.node.color}}>●</span>
+                  <span className="font-bold mx-2">{language.node.name}</span>{" "}
+                  <span className="text-gray-600 mr-4">{language.percentage}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
       <div className="text-center">
         <Button

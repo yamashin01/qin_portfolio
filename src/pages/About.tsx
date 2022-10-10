@@ -84,7 +84,7 @@ const About:NextPage = () => {
         </div>
         <div className="mb-8">
           <Text size="xl" weight={700}>趣味</Text>
-          <p className="whitespace-normal text-lg">旅行（国内・海外問わず）・登山・サイクリング・ダイビング・麻雀・Youtube・読書（小説・ビジネス書・漫画）・ゲーム（バイオハザード4のVRゲームにハマり中）</p>
+          <p className="whitespace-normal text-lg">旅行（国内・海外問わず）・筋トレ・登山・サイクリング・ダイビング・麻雀・Youtube・読書（小説・ビジネス書・漫画）・ゲーム（バイオハザード4のVRゲームにハマり中）</p>
           <div className="md:flex text-center mb-8 p-4 justify-between">
               <Image
               src={hobbyKitadake}
